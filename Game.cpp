@@ -1,4 +1,7 @@
 #include "Game.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "TextureManager.h"
 
 Game *Game::instance = nullptr;
 

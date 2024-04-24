@@ -1,3 +1,6 @@
+// SDLGameObject n precisa, deixar só GameObject
+// usar biblioteca de vetores
+
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 

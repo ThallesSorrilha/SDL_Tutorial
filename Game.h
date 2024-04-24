@@ -7,10 +7,9 @@
 #include <SDL_image.h>
 
 #include "Utilities.h"
-#include "TextureManager.h"
 #include "GameObject.h"
-#include "Player.h"
-#include "Enemy.h"
+
+class Player;
 
 class Game
 {

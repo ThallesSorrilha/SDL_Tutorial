@@ -3,8 +3,6 @@
 
 #include "GameObject.h"
 #include "LoaderParams.h"
-#include "Game.h"
-#include "TextureManager.h"
 
 class SDLGameObject : public GameObject
 {
