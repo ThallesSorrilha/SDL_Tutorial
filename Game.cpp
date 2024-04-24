@@ -103,6 +103,10 @@ void Game::clean()
     }
 }
 
-inline bool Game::getRun() const { return this->run; }
+bool Game::getRun() const {
+    return this->run;
+}
 
-inline SDL_Renderer *Game::getRenderer() const { return renderer; }
+SDL_Renderer *Game::getRenderer() const {
+    return renderer;
+}

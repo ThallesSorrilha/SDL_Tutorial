@@ -9,12 +9,22 @@ LoaderParams::LoaderParams(const int xPosition, const int yPosition, const int w
     this->textureID = textureID;
 }
 
-inline int LoaderParams::getXPosition() const { return xPosition; }
+int LoaderParams::getXPosition() const {
+    return xPosition;
+}
 
-inline int LoaderParams::getYPosition() const { return yPosition; }
+int LoaderParams::getYPosition() const {
+    return yPosition;
+}
 
-inline int LoaderParams::getWidth() const { return width; }
+int LoaderParams::getWidth() const {
+    return width;
+}
 
-inline int LoaderParams::getHeight() const { return height; }
+int LoaderParams::getHeight() const {
+    return height;
+}
 
-inline string LoaderParams::getTextureID() const { return textureID; }
+string LoaderParams::getTextureID() const {
+    return textureID;
+}

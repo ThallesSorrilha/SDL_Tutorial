@@ -1,6 +1,6 @@
 #include "Player.h"
 
-inline Player::Player(const LoaderParams *params) : SDLGameObject(params) {}
+Player::Player(const LoaderParams *params) : SDLGameObject(params) {}
 
 void Player::draw()
 {
