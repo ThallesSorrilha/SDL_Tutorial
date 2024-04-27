@@ -4,12 +4,8 @@
 #include <vector>
 
 #include <SDL.h>
-#include <SDL_image.h>
 
-#include "Utilities.h"
 #include "GameObject.h"
-
-class Player;
 
 class Game
 {

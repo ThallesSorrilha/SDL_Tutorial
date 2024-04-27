@@ -1,15 +1,15 @@
 #include "Enemy.h"
 
-Enemy::Enemy(const LoaderParams *params) : SDLGameObject(params) {}
+Enemy::Enemy(const LoaderParams *params) : GameObject(params) {}
 
 void Enemy::draw()
 {
-    SDLGameObject::draw();
+    GameObject::draw();
 }
 
 void Enemy::update()
 {
-    this->columnFrame = (int(SDL_GetTicks() / 100) % 4);
+    GameObject::update();
 }
 
 void Enemy::clean()

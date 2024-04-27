@@ -4,9 +4,9 @@
 #include <SDL.h>
 
 #include "LoaderParams.h"
-#include "SDLGameObject.h"
+#include "GameObject.h"
 
-class Player : public SDLGameObject
+class Player : public GameObject
 {
 public:
     Player(const LoaderParams *params);

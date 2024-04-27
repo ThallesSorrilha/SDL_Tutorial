@@ -1,18 +1,27 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include <string>
+
 #include "LoaderParams.h"
 
 class GameObject
 {
+
 protected:
-    GameObject(const LoaderParams *params) {}
-    virtual ~GameObject() {}
+    int xPosition;
+    int yPosition;
+    int width;
+    int height;
+    int columnFrame;
+    int rowFrame;
+    std::string textureID;
 
 public:
-    virtual void draw() = 0;
-    virtual void update() = 0;
-    virtual void clean() = 0;
+    GameObject(const LoaderParams *params);
+    virtual void draw();
+    virtual void update();
+    virtual void clean();
 };
 
 #endif

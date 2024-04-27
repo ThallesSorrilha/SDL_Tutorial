@@ -1,7 +1,7 @@
 #ifndef LOADERPARAMS_H
 #define LOADERPARAMS_H
 
-#include "Utilities.h"
+#include <string>
 
 class LoaderParams
 {
@@ -10,15 +10,15 @@ private:
     int yPosition;
     int width;
     int height;
-    string textureID;
+    std::string textureID;
 
 public:
-    LoaderParams(const int xPosition, const int yPosition, const int width, const int height, const string textureID);
-    int getXPosition() const;
-    int getYPosition() const;
-    int getWidth() const;
-    int getHeight() const;
-    string getTextureID() const;
+    inline LoaderParams(const int xPosition, const int yPosition, const int width, const int height, const std::string textureID) : xPosition(xPosition), yPosition(yPosition), width(width), height(height), textureID(textureID) {}
+    inline int getXPosition() const { return this->xPosition; }
+    inline int getYPosition() const { return this->yPosition; }
+    inline int getWidth() const { return this->width; }
+    inline int getHeight() const { return this->height; }
+    inline std::string getTextureID() const { return this->textureID; }
 };
 
 #endif

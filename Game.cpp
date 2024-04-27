@@ -1,3 +1,7 @@
+#include <iostream>
+
+#include <SDL_image.h>
+
 #include "Game.h"
 #include "Player.h"
 #include "Enemy.h"
@@ -12,27 +16,27 @@ bool Game::init(const char *title, const int xpos, const int ypos, const int wid
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
-        cerr << "SDL_INIT_VIDEO error " << endl;
+        std::cerr << "SDL_INIT_VIDEO error " << std::endl;
         return false;
     }
 
     if ((IMG_Init(IMG_INIT_PNG) == 0))
     {
-        cerr << "IMG_INIT_PNG error " << endl;
+        std::cerr << "IMG_INIT_PNG error " << std::endl;
         return false;
     }
 
     this->window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
     if (this->window == nullptr)
     {
-        cerr << "Main Window error " << endl;
+        std::cerr << "Main Window error " << std::endl;
         return false;
     };
 
     this->renderer = SDL_CreateRenderer(this->window, -1, 0);
     if (this->renderer == nullptr)
     {
-        cerr << "Main Window's Renderer error " << endl;
+        std::cerr << "Main Window's Renderer error " << std::endl;
         return false;
     };
 

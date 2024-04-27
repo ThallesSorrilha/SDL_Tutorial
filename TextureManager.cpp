@@ -1,16 +1,20 @@
+#include <iostream>
+
+#include <SDL_image.h>
+
 #include "TextureManager.h"
 
-TextureManager* TextureManager::instance = nullptr;
+TextureManager *TextureManager::instance = nullptr;
 
 TextureManager::TextureManager() {}
 TextureManager::~TextureManager() {}
 
-bool TextureManager::loadTexture(string fileName, string id, SDL_Renderer *renderer)
+bool TextureManager::loadTexture(const std::string fileName, const std::string id, SDL_Renderer *renderer)
 {
     SDL_Surface *surface = IMG_Load(fileName.c_str());
     if (surface == nullptr)
     {
-        cerr << fileName << " surface error" << endl;
+        std::cerr << fileName << " surface error" << std::endl;
         return false;
     }
 
@@ -18,7 +22,7 @@ bool TextureManager::loadTexture(string fileName, string id, SDL_Renderer *rende
     SDL_FreeSurface(surface);
     if (texture == nullptr)
     {
-        cerr << fileName << " texture error" << endl;
+        std::cerr << fileName << " texture error" << std::endl;
         return false;
     }
 
@@ -26,7 +30,7 @@ bool TextureManager::loadTexture(string fileName, string id, SDL_Renderer *rende
     return true;
 }
 
-void TextureManager::draw(string textureID, int x, int y, int width, int height, SDL_Renderer *renderer, SDL_RendererFlip flip)
+void TextureManager::draw(const std::string textureID, const int x, const int y, const int width, const int height, SDL_Renderer *renderer, const SDL_RendererFlip flip)
 {
     SDL_Rect playerSrcRect;
     SDL_Rect playerDestRect;
@@ -43,7 +47,7 @@ void TextureManager::draw(string textureID, int x, int y, int width, int height,
     SDL_RenderCopyEx(renderer, this->textureMap[textureID], &playerSrcRect, &playerDestRect, 0, 0, flip);
 }
 
-void TextureManager::drawFrame(std::string textureID, int x, int y, int width, int height, int column, int row, SDL_Renderer *renderer, SDL_RendererFlip flip)
+void TextureManager::drawFrame(const std::string textureID, const int x, const int y, const int width, const int height, const int column, const int row, SDL_Renderer *renderer, const SDL_RendererFlip flip)
 {
     SDL_Rect playerSrcRect;
     SDL_Rect playerDestRect;

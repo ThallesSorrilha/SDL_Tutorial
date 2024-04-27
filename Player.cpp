@@ -1,15 +1,15 @@
 #include "Player.h"
 
-Player::Player(const LoaderParams *params) : SDLGameObject(params) {}
+Player::Player(const LoaderParams *params) : GameObject(params) {}
 
 void Player::draw()
 {
-    SDLGameObject::draw();
+    GameObject::draw();
 }
 
 void Player::update()
 {
-    this->columnFrame = (int(SDL_GetTicks() / 100) % 4);
+    GameObject::update();
 }
 
 void Player::clean()
