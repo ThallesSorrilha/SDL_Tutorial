@@ -42,7 +42,7 @@ bool Game::init(const char *title, const int xpos, const int ypos, const int wid
 
     // some image loads
     TheTextureManager::Instance()->loadTexture("assets/Player_72.png", "player", this->renderer);
-    TheTextureManager::Instance()->loadTexture("assets/Enemy_72.png", "enemy", this->renderer);
+    TheTextureManager::Instance()->loadTexture("assets/FlyEnemy_72.png", "enemy", this->renderer);
 
     this->gameObjects.push_back(new Player(new LoaderParams(100, 100, 72, 72, "player")));
     this->gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 72, 72, "enemy")));
@@ -107,10 +107,12 @@ void Game::clean()
     }
 }
 
-bool Game::getRun() const {
+bool Game::getRun() const
+{
     return this->run;
 }
 
-SDL_Renderer *Game::getRenderer() const {
+SDL_Renderer *Game::getRenderer() const
+{
     return renderer;
 }

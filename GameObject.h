@@ -4,13 +4,15 @@
 #include <string>
 
 #include "LoaderParams.h"
+#include "Vector2D.h"
 
 class GameObject
 {
 
 protected:
-    int xPosition;
-    int yPosition;
+    Vector2D position;
+    Vector2D velocity;
+    Vector2D acceleration;
     int width;
     int height;
     int columnFrame;

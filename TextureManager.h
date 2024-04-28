@@ -15,11 +15,12 @@ private:
     */
     std::map<std::string, SDL_Texture *> textureMap;
 
-    TextureManager();
     static TextureManager *instance;
+    TextureManager();
+    ~TextureManager();
 
 public:
-    ~TextureManager();
+    
     static TextureManager *Instance()
     {
         if (instance == nullptr)

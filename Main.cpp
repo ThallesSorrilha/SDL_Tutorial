@@ -19,13 +19,18 @@ int main(int argc, char *args[])
 
     while (TheGame::Instance()->getRun())
     {
+        frameStart = SDL_GetTicks();
+
         TheGame::Instance()->input();
-
         TheGame::Instance()->update();
-
         TheGame::Instance()->render();
 
-        SDL_Delay(10);
+        frameTime = SDL_GetTicks() - frameStart;
+
+        if (frameTime < DELAY_TIME)
+        {
+            SDL_Delay((int)(DELAY_TIME - frameTime));
+        }
     }
 
     TheGame::Instance()->clean();

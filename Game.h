@@ -19,11 +19,11 @@ private:
 
     std::vector<GameObject *> gameObjects;
 
-    Game();
     static Game *instance;
+    Game();
+    ~Game();
 
 public:
-    ~Game();
     static Game *Instance()
     {
         if (instance == nullptr)

@@ -13,7 +13,15 @@ private:
     std::string textureID;
 
 public:
-    inline LoaderParams(const int xPosition, const int yPosition, const int width, const int height, const std::string textureID) : xPosition(xPosition), yPosition(yPosition), width(width), height(height), textureID(textureID) {}
+    LoaderParams(const int xPosition, const int yPosition, const int width, const int height, const std::string textureID)
+    {
+        this->xPosition = xPosition;
+        this->yPosition = yPosition;
+        this->width = width;
+        this->height = height;
+        this->textureID = textureID;
+    }
+    
     inline int getXPosition() const { return this->xPosition; }
     inline int getYPosition() const { return this->yPosition; }
     inline int getWidth() const { return this->width; }
