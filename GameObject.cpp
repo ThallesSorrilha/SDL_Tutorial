@@ -18,10 +18,6 @@ void GameObject::draw()
 
 void GameObject::update()
 {
-    // test
-    this->velocity.setX(1);
-    this->velocity.setY(1);
-
     this->columnFrame = (int(SDL_GetTicks() / 250) % 4);
     this->position += this->velocity;
     this->velocity += this->acceleration;

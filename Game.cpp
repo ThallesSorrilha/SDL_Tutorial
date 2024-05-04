@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "TextureManager.h"
+#include "InputHandler.h"
 
 Game *Game::instance = nullptr;
 
@@ -53,19 +54,7 @@ bool Game::init(const char *title, const int xpos, const int ypos, const int wid
 
 void Game::input()
 {
-    while (SDL_PollEvent(&this->event) != 0)
-    {
-        switch (this->event.type)
-        {
-        case SDL_QUIT:
-            this->run = false;
-            break;
-
-        default:
-            // player events
-            break;
-        }
-    }
+    TheInputHandler::Instance()->update();
 }
 
 void Game::update()
@@ -91,6 +80,7 @@ void Game::render()
 
 void Game::clean()
 {
+    TheInputHandler::Instance()->clean();
     if (this->renderer != nullptr)
     {
         SDL_DestroyRenderer(this->renderer);

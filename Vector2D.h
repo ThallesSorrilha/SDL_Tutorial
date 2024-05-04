@@ -15,7 +15,7 @@ public:
 
     inline float getX() const { return this->x; }
     inline float getY() const { return this->y; }
-    
+
     inline void setX(const float x) { this->x = x; }
     inline void setY(const float y) { this->y = y; }
 
@@ -81,7 +81,6 @@ public:
             this->y *= 1 / l;
         }
     }
-
 };
 
 #endif

@@ -9,9 +9,9 @@ void Enemy::draw()
 
 void Enemy::update()
 {
+    this->velocity.setX(1);
+    this->velocity.setY(1);
     GameObject::update();
-    //this->position.setX(position.getX() + 1);
-    //this->position.setY(position.getY() + 1);
 }
 
 void Enemy::clean()

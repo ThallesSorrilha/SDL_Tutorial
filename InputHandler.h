@@ -10,6 +10,8 @@ private:
     static InputHandler *instance;
     InputHandler(){};
     ~InputHandler() {}
+    Uint8 *keyStates;
+    SDL_Event event;
 
 public:
     static InputHandler *Instance()
@@ -23,6 +25,7 @@ public:
 
     void update();
     void clean();
+    bool isKeyDown(SDL_Scancode key);
 };
 
 typedef InputHandler TheInputHandler;

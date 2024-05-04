@@ -13,7 +13,6 @@ class Game
 private:
     SDL_Window *window;
     SDL_Renderer *renderer;
-    SDL_Event event;
 
     bool run = false;
 
@@ -50,6 +49,7 @@ public:
 
     bool getRun() const;
     SDL_Renderer *getRenderer() const;
+    inline void quit() { this->run = false; }
 };
 
 typedef Game TheGame;
