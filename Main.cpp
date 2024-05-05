@@ -2,8 +2,7 @@
 #define SDL_MAIN_HANDLED
 #endif
 
-// g++ Main.cpp Game.cpp TextureManager.cpp GameObject.cpp Player.cpp Enemy.cpp -o Main.exe `sdl2-config --cflags --libs` -lSDL2_image
-
+// g++ Main.cpp Game.cpp TextureManager.cpp GameObject.cpp Player.cpp Enemy.cpp InputHandler.cpp -o Main.exe `sdl2-config --cflags --libs` -lSDL2_image
 #include <SDL.h>
 
 #include "Main.h"

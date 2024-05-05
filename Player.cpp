@@ -1,15 +1,16 @@
-#include <iostream>
-
 #include "Player.h"
 #include "InputHandler.h"
 
-Player::Player(const LoaderParams *params) : GameObject(params) {}
+int x;
+int y;
 
-float x;
-float y;
+Player::Player(const LoaderParams *params) : GameObject(params), direction(0, 0) {}
 
 void Player::handleInput()
 {
+    direction.setX(0);
+    direction.setY(0);
+
     x = 0;
     y = 0;
 
@@ -25,16 +26,18 @@ void Player::handleInput()
 
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
     {
-        y -= 1;
+        y += 1;
     }
 
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
     {
-        y += 1;
+        y -= 1;
     }
 
-    this->velocity.setX(x * 2);
-    this->velocity.setY(y * 2);
+    this->direction.setX(x);
+    this->direction.setY(y);
+
+    this->direction.normalize();
 }
 
 void Player::update()
@@ -43,6 +46,27 @@ void Player::update()
     this->velocity.setY(0);
 
     handleInput();
+
+    this->velocity.setX(direction.getX() * 2);
+    this->velocity.setY(direction.getY() * -2);
+
+    if (direction.getX() > 0)
+    {
+        this->rowFrame = 3;
+    }
+    else if (direction.getX() < 0)
+    {
+        this->rowFrame = 2;
+    }
+
+    if (direction.getY() > 0)
+    {
+        this->rowFrame = 1;
+    }
+    else if (direction.getY() < 0)
+    {
+        this->rowFrame = 0;
+    }
 
     GameObject::update();
 }

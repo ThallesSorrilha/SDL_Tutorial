@@ -5,10 +5,12 @@
 
 #include "LoaderParams.h"
 #include "GameObject.h"
+#include "Vector2D.h"
 
 class Player : public GameObject
 {
 private:
+    Vector2D direction;
     void handleInput();
 
 public:

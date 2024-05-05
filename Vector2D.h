@@ -11,7 +11,11 @@ private:
     float y;
 
 public:
-    inline Vector2D(float x, float y) : x(x), y(y) {}
+    Vector2D(float x, float y)
+    {
+        this->x = x;
+        this->y = y;
+    }
 
     inline float getX() const { return this->x; }
     inline float getY() const { return this->y; }
@@ -75,7 +79,7 @@ public:
     void normalize()
     {
         float l = length();
-        if (l > 0) // we never want to attempt to divide by 0
+        if (l > 1) // we never want to attempt to divide by 0
         {
             this->x *= 1 / l;
             this->y *= 1 / l;
