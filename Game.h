@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <vector>
+#include <string>
 
 #include <SDL.h>
 
@@ -42,7 +43,7 @@ public:
     */
     bool init(const char *title, const int xpos, const int ypos, const int width, const int height, const int flags);
 
-    void input();
+    void handleEvents();
     void update();
     void render();
     void clean();
@@ -50,6 +51,8 @@ public:
     bool getRun() const;
     SDL_Renderer *getRenderer() const;
     inline void quit() { this->run = false; }
+
+    bool criticalError(std::string msg) const;
 };
 
 typedef Game TheGame;

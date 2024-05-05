@@ -8,6 +8,9 @@
 
 class Player : public GameObject
 {
+private:
+    void handleInput();
+
 public:
     Player(const LoaderParams *params);
     virtual void draw();

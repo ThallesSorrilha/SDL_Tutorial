@@ -10,7 +10,7 @@ private:
     static InputHandler *instance;
     InputHandler(){};
     ~InputHandler() {}
-    Uint8 *keyStates;
+    const Uint8 *keyStates;
     SDL_Event event;
 
 public:

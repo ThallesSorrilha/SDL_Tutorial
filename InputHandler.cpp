@@ -1,6 +1,8 @@
 #include "InputHandler.h"
 #include "Game.h"
 
+InputHandler *InputHandler::instance = nullptr;
+
 void InputHandler::update()
 {
     this->keyStates = SDL_GetKeyboardState(0);

@@ -21,7 +21,7 @@ int main(int argc, char *args[])
     {
         frameStart = SDL_GetTicks();
 
-        TheGame::Instance()->input();
+        TheGame::Instance()->handleEvents();
         TheGame::Instance()->update();
         TheGame::Instance()->render();
 

@@ -17,33 +17,36 @@ bool Game::init(const char *title, const int xpos, const int ypos, const int wid
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
-        std::cerr << "SDL_INIT_VIDEO error " << std::endl;
-        return false;
+        return criticalError("SDL_INIT_VIDEO error ");
     }
 
     if ((IMG_Init(IMG_INIT_PNG) == 0))
     {
-        std::cerr << "IMG_INIT_PNG error " << std::endl;
-        return false;
+        return criticalError("IMG_INIT_PNG error ");
     }
 
     this->window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
     if (this->window == nullptr)
     {
-        std::cerr << "Main Window error " << std::endl;
-        return false;
+        return criticalError("Main Window error ");
     };
 
     this->renderer = SDL_CreateRenderer(this->window, -1, 0);
     if (this->renderer == nullptr)
     {
-        std::cerr << "Main Window's Renderer error " << std::endl;
-        return false;
+        return criticalError("Main Renderer error ");
     };
 
     // some image loads
-    TheTextureManager::Instance()->loadTexture("assets/Player_72.png", "player", this->renderer);
-    TheTextureManager::Instance()->loadTexture("assets/FlyEnemy_72.png", "enemy", this->renderer);
+    if (!TheTextureManager::Instance()->loadTexture("assets/Player_72.png", "player", this->renderer))
+    {
+        return criticalError("Player img error");
+    }
+
+    if (!TheTextureManager::Instance()->loadTexture("assets/FlyEnemy_72.png", "enemy", this->renderer))
+    {
+        return criticalError("Fly Enemy img error");
+    }
 
     this->gameObjects.push_back(new Player(new LoaderParams(100, 100, 72, 72, "player")));
     this->gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 72, 72, "enemy")));
@@ -52,7 +55,7 @@ bool Game::init(const char *title, const int xpos, const int ypos, const int wid
     return this->run;
 }
 
-void Game::input()
+void Game::handleEvents()
 {
     TheInputHandler::Instance()->update();
 }
@@ -105,4 +108,10 @@ bool Game::getRun() const
 SDL_Renderer *Game::getRenderer() const
 {
     return renderer;
+}
+
+bool Game::criticalError(std::string msg) const
+{
+    std::cerr << msg << std::endl;
+    return false;
 }
