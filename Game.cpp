@@ -48,8 +48,8 @@ bool Game::init(const char *title, const int xpos, const int ypos, const int wid
         return criticalError("Fly Enemy img error");
     }
 
-    this->gameObjects.push_back(new Player(new LoaderParams(100, 100, 72, 72, "player")));
     this->gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 72, 72, "enemy")));
+    this->gameObjects.push_back(new Player(new LoaderParams(100, 100, 72, 72, "player")));
 
     this->run = true;
     return this->run;

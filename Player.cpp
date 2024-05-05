@@ -1,9 +1,6 @@
 #include "Player.h"
 #include "InputHandler.h"
 
-int x;
-int y;
-
 Player::Player(const LoaderParams *params) : GameObject(params), direction(0, 0) {}
 
 void Player::handleInput()
@@ -11,8 +8,8 @@ void Player::handleInput()
     direction.setX(0);
     direction.setY(0);
 
-    x = 0;
-    y = 0;
+    int x = 0;
+    int y = 0;
 
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
     {
@@ -37,7 +34,7 @@ void Player::handleInput()
     this->direction.setX(x);
     this->direction.setY(y);
 
-    this->direction.normalize();
+    this->direction.normalize(1);
 }
 
 void Player::update()

@@ -9,9 +9,22 @@ void InputHandler::update()
 
     while (SDL_PollEvent(&event))
     {
-        if (event.type == SDL_QUIT)
+        switch (event.type)
         {
-            TheGame::Instance()->quit();
+            case SDL_QUIT:
+                TheGame::Instance()->quit();
+                break;
+
+            case SDL_KEYDOWN:
+                onKeyDown();
+                break;
+
+            case SDL_KEYUP:
+                onKeyUp();
+                break;
+
+            default:
+                break;
         }
     }
 }
@@ -35,4 +48,14 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
     }
 
     return false;
+}
+
+void InputHandler::onKeyDown()
+{
+    this->keyStates = SDL_GetKeyboardState(0);
+}
+
+void InputHandler::onKeyUp()
+{
+    this->keyStates = SDL_GetKeyboardState(0);
 }

@@ -25,7 +25,10 @@ public:
 
     void update();
     void clean();
+
     bool isKeyDown(SDL_Scancode key);
+    void onKeyDown();
+    void onKeyUp();
 };
 
 typedef InputHandler TheInputHandler;

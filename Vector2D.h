@@ -76,10 +76,10 @@ public:
         return *this;
     }
 
-    void normalize()
+    void normalize(int limit)
     {
         float l = length();
-        if (l > 1) // we never want to attempt to divide by 0
+        if (l > limit) // we never want to attempt to divide by 0
         {
             this->x *= 1 / l;
             this->y *= 1 / l;
