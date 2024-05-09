@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy(const LoaderParams *params) : GameObject(params) {}
+Enemy::Enemy(const LoaderParams& params) : GameObject(params) {}
 
 void Enemy::update()
 {

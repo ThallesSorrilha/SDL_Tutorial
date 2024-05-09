@@ -51,8 +51,6 @@ public:
     bool getRun() const;
     SDL_Renderer *getRenderer() const;
     inline void quit() { this->run = false; }
-
-    bool criticalError(std::string msg) const;
 };
 
 typedef Game TheGame;

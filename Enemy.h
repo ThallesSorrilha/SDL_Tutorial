@@ -9,10 +9,10 @@
 class Enemy : public GameObject
 {
 public:
-    Enemy(const LoaderParams *params);
-    virtual void draw();
-    virtual void update();
-    virtual void clean();
+    Enemy(const LoaderParams& params);
+    virtual void draw() override;
+    virtual void update() override;
+    virtual void clean() override;
 };
 
 #endif

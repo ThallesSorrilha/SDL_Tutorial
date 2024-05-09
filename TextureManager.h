@@ -10,10 +10,6 @@ class TextureManager
 {
 
 private:
-    /*
-    Correlate an alias to a texture
-    */
-    std::map<std::string, SDL_Texture *> textureMap;
 
     static TextureManager *instance;
     TextureManager();
@@ -35,13 +31,12 @@ public:
 
     params:
     fileName - source of the image
-    id - create an alias
     renderer - renderer
 
     return:
     (bool) - true if the image loads correcly
     */
-    bool loadTexture(const std::string fileName, const std::string textureID, SDL_Renderer *renderer);
+    SDL_Texture* loadTexture(const std::string fileName, SDL_Renderer *renderer);
 
     /*
     params:
@@ -53,7 +48,7 @@ public:
     renderer - renderer
     flip - see flags for flips
     */
-    void draw(const std::string textureID, const int x, const int y, const int width, const int height, SDL_Renderer *renderer, const SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void draw(SDL_Texture* textureID, const int x, const int y, const int width, const int height, SDL_Renderer *renderer, const SDL_RendererFlip flip = SDL_FLIP_NONE);
 
     /*
     params:
@@ -67,7 +62,7 @@ public:
     renderer - renderer
     flip - see flags for flips
     */
-    void drawFrame(const std::string textureID, const int x, const int y, const int width, const int height, const int column, const int row, SDL_Renderer *renderer, const SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void drawFrame(SDL_Texture* textureID, const int x, const int y, const int width, const int height, const int column, const int row, SDL_Renderer *renderer, const SDL_RendererFlip flip = SDL_FLIP_NONE);
 };
 
 typedef TextureManager TheTextureManager;

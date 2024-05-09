@@ -14,10 +14,10 @@ private:
     void handleInput();
 
 public:
-    Player(const LoaderParams *params);
-    virtual void draw();
-    virtual void update();
-    virtual void clean();
+    Player(const LoaderParams& params);
+    virtual void draw() override;
+    virtual void update() override;
+    virtual void clean() override;
 };
 
 #endif

@@ -9,6 +9,13 @@
 class GameObject
 {
 
+// força e massa
+// sem tamanho e posição dos Frames
+// zerar força resultante, fazer processamento, somatório de forças e calcular a força resultante
+
+// textura para um objeto precisa ter outra classe, para parâmetros da textura (tipo: Animation)
+// modularizar
+
 protected:
     Vector2D position;
     Vector2D velocity;
@@ -17,10 +24,10 @@ protected:
     int height;
     int columnFrame;
     int rowFrame;
-    std::string textureID;
+    SDL_Texture* textureID;
 
 public:
-    GameObject(const LoaderParams *params);
+    GameObject(const LoaderParams& params);
     virtual void draw();
     virtual void update();
     virtual void clean();

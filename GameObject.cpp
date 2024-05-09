@@ -2,11 +2,11 @@
 #include "Game.h"
 #include "TextureManager.h"
 
-GameObject::GameObject(const LoaderParams *params) : position(params->getXPosition(), params->getYPosition()), velocity(0, 0), acceleration(0, 0)
+GameObject::GameObject(const LoaderParams& params) : position(params.xPosition, params.yPosition), velocity(0, 0), acceleration(0, 0)
 {
-    this->width = params->getWidth();
-    this->height = params->getHeight();
-    this->textureID = params->getTextureID();
+    this->width = params.width;
+    this->height = params.height;
+    this->textureID = params.textureID;
     this->columnFrame = 0;
     this->rowFrame = 0;
 }

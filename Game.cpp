@@ -7,6 +7,10 @@
 #include "Enemy.h"
 #include "TextureManager.h"
 #include "InputHandler.h"
+#include "Debug.h"
+
+// separar parte de pixels(int) da parte de lógica(float)
+// trocar int por float na lógica
 
 Game *Game::instance = nullptr;
 
@@ -38,18 +42,20 @@ bool Game::init(const char *title, const int xpos, const int ypos, const int wid
     };
 
     // some image loads
-    if (!TheTextureManager::Instance()->loadTexture("assets/Player_72.png", "player", this->renderer))
+    SDL_Texture* playerTexture = TheTextureManager::Instance()->loadTexture("assets/Player_72.png", this->renderer);
+    if (playerTexture == nullptr)
     {
         return criticalError("Player img error");
     }
 
-    if (!TheTextureManager::Instance()->loadTexture("assets/FlyEnemy_72.png", "enemy", this->renderer))
+    SDL_Texture* flyEnemyTexture = TheTextureManager::Instance()->loadTexture("assets/FlyEnemy_72.png", this->renderer);
+    if (flyEnemyTexture== nullptr)
     {
-        return criticalError("Fly Enemy img error");
+        return criticalError("FlyEnemy img error");
     }
 
-    this->gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 72, 72, "enemy")));
-    this->gameObjects.push_back(new Player(new LoaderParams(100, 100, 72, 72, "player")));
+    this->gameObjects.push_back(new Enemy(LoaderParams{300, 300, 72, 72, flyEnemyTexture}));
+    this->gameObjects.push_back(new Player(LoaderParams{100, 100, 72, 72, playerTexture}));
 
     this->run = true;
     return this->run;
@@ -108,10 +114,4 @@ bool Game::getRun() const
 SDL_Renderer *Game::getRenderer() const
 {
     return renderer;
-}
-
-bool Game::criticalError(std::string msg) const
-{
-    std::cerr << msg << std::endl;
-    return false;
 }

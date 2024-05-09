@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "InputHandler.h"
 
-Player::Player(const LoaderParams *params) : GameObject(params), direction(0, 0) {}
+Player::Player(const LoaderParams& params) : GameObject(params), direction(0, 0) {}
 
 void Player::handleInput()
 {
