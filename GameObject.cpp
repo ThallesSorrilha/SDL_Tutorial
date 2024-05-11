@@ -20,7 +20,7 @@ void GameObject::update()
 
 void GameObject::draw()
 {
-    TheTextureManager::Instance()->drawFrame(this->textureID, (int)this->position.getX(), (int)this->position.getY(), this->width, this->height, this->columnFrame, this->rowFrame, TheGame::Instance()->getRenderer());
+    TheTextureManager::Instance()->drawFrame(this->textureID, (int)this->position.getX(), (int)this->position.getY(), (int)this->width, (int)this->height, (int)this->columnFrame, (int)this->rowFrame, TheGame::Instance()->getRenderer());
 }
 
 void GameObject::clean()

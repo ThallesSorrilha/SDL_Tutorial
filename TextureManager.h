@@ -34,13 +34,13 @@ public:
     renderer - renderer
 
     return:
-    (bool) - true if the image loads correcly
+    SDL_Texture* - a pointer to the texture
     */
     SDL_Texture* loadTexture(const std::string fileName, SDL_Renderer *renderer);
 
     /*
     params:
-    id - alias of the texture
+    textureID - pointer to the the texture
     x - x position to start printing on the screen
     y - y position to start printing on the screen
     width - width to print from the source image
@@ -52,7 +52,7 @@ public:
 
     /*
     params:
-    id - alias of the texture
+    textureID - pointer to the the texture
     x - x position to start printing the final rectangle on the screen
     y - y position to start printing the final rectangle on the screen
     width - width of the final rectangle

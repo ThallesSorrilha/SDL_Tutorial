@@ -20,10 +20,10 @@ protected:
     Vector2D position;
     Vector2D velocity;
     Vector2D acceleration;
-    int width;
-    int height;
-    int columnFrame;
-    int rowFrame;
+    float width;
+    float height;
+    float columnFrame;
+    float rowFrame;
     SDL_Texture* textureID;
 
 public:
