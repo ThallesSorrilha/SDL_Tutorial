@@ -17,11 +17,12 @@ void GameObject::update()
 {
     if (moving)
     {
-        animation.update(position.x, position.y);
+        animation.update(true, position.x, position.y);
     }
     else
     {
         animation.columnFrame = 0;
+        animation.update(false, position.x, position.y);
     }
 }
 

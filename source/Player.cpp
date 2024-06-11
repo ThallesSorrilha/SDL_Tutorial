@@ -16,38 +16,39 @@ void Player::handleInput()
     int x = 0;
     int y = 0;
 
-    moving = false;
+    moving = true;
 
     if (InputHandler::isKeyDown(SDL_SCANCODE_RIGHT))
     {
         x += 1;
         animation.rowFrame = 3;
-        moving = true;
     }
 
     if (InputHandler::isKeyDown(SDL_SCANCODE_LEFT))
     {
         x -= 1;
         animation.rowFrame = 2;
-        moving = true;
     }
 
     if (InputHandler::isKeyDown(SDL_SCANCODE_UP))
     {
         y += 1;
         animation.rowFrame = 1;
-        moving = true;
     }
 
     if (InputHandler::isKeyDown(SDL_SCANCODE_DOWN))
     {
         y -= 1;
         animation.rowFrame = 0;
-        moving = true;
     }
 
     control.x = x;
     control.y = y;
+
+    if (x == 0 && y == 0)
+    {
+        moving = false;
+    }
 
     control.normalize(1);
 }

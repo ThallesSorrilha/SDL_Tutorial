@@ -30,6 +30,17 @@ void Map::loadMap(int arr[defaultHeightBlocks][defaultWidthBlocks])
     }
 }
 
+void Map::gifMap()
+{
+    int column = int(SDL_GetTicks() / 2000) % defaultGifSteps;
+    src.x = column * defaultBlockSize;
+}
+
+void Map::updateMap()
+{
+    gifMap();
+}
+
 void Map::drawMap()
 {
     int type = 0;

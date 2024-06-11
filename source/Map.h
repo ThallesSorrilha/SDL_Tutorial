@@ -17,5 +17,7 @@ public:
     ~Map();
 
     void loadMap(int arr[defaultHeightBlocks][defaultWidthBlocks]);
+    void gifMap();
+    void updateMap();
     void drawMap();
 };

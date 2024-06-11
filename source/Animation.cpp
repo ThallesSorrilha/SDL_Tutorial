@@ -19,9 +19,12 @@ Animation::Animation(const GOLoader loader)
 
 Animation::~Animation() {}
 
-void Animation::update(const int positionX, const int positionY)
+void Animation::update(bool gif, const int positionX, const int positionY)
 {
-    Animation::gif();
+    if (gif)
+    {
+        Animation::gif();
+    }
     srcRect.x = columnFrame * defaultBlockSize;
     srcRect.y = rowFrame * defaultBlockSize;
     destRect.x = positionX;
