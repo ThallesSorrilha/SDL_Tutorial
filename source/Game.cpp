@@ -41,6 +41,7 @@ void Game::init(const char *title, int xPosition, int yPosition, int width, int 
     gameObjects.push_back(new Enemy(GOLoader{"assets/Enemy_72.png", 0, 0, defaultBlockSize, defaultBlockSize}));
     gameObjects.push_back(new Player(GOLoader{"assets/Player_72.png", 100, 100, defaultBlockSize, defaultBlockSize}));
 
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
     run = true;
 };
 
@@ -53,14 +54,13 @@ void Game::update()
 {
     for (std::vector<GameObject *>::size_type i = 0; i < gameObjects.size(); i++)
     {
-        map->updateMap();
+        // map->updateMap();
         gameObjects[i]->update();
     }
 };
 
 void Game::draw()
 {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
     SDL_RenderClear(renderer);
 
     map->drawMap();

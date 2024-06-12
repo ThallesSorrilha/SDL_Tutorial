@@ -9,7 +9,7 @@
 class Player : public GameObject
 {
 private:
-    Vector2D control;
+    Vector2D direction;
 
 public:
     Player(const GOLoader loader);

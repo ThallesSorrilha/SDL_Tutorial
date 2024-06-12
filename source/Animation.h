@@ -18,7 +18,7 @@ public:
     Animation(const GOLoader loader);
     ~Animation();
 
-    void update(bool gif, const int positionX, const int positionY);
+    void update(const bool gif, const float positionX, const float positionY);
     void draw();
     void gif();
 };

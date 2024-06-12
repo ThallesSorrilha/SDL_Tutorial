@@ -15,15 +15,11 @@ GameObject::~GameObject() {}
 
 void GameObject::update()
 {
-    if (moving)
-    {
-        animation.update(true, position.x, position.y);
-    }
-    else
+    if (!moving)
     {
         animation.columnFrame = 0;
-        animation.update(false, position.x, position.y);
     }
+        animation.update(moving, position.x, position.y);
 }
 
 void GameObject::draw()

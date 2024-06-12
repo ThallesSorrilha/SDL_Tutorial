@@ -10,8 +10,8 @@ Player::Player(const GOLoader loader) : GameObject(loader)
 
 void Player::handleInput()
 {
-    control.x = 0;
-    control.y = 0;
+    direction.x = 0;
+    direction.y = 0;
 
     int x = 0;
     int y = 0;
@@ -42,15 +42,15 @@ void Player::handleInput()
         animation.rowFrame = 0;
     }
 
-    control.x = x;
-    control.y = y;
+    direction.x = x;
+    direction.y = y;
 
-    if (x == 0 && y == 0)
+    if (direction.length() == 0)
     {
         moving = false;
     }
 
-    control.normalize(1);
+    direction.normalize(1);
 }
 
 void Player::update()
@@ -59,8 +59,8 @@ void Player::update()
 
     GameObject::update();
 
-    position.x += control.x * 2;
-    position.y += control.y * -2;
+    position.x += direction.x * 2;
+    position.y += direction.y * -2;
 }
 
 void Player::draw()
