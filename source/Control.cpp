@@ -1,7 +1,7 @@
 #include "Control.h"
 #include "InputHandler.h"
 
-Control::Control(SDL_Scancode arr[4])
+Control::Control(int arr[4])
 {
     for (int i = 0; i < 4; i++)
     {

@@ -30,7 +30,24 @@ void InputHandler::update()
     }
 }
 
-bool InputHandler::isKeyDown(SDL_Scancode key)
+bool InputHandler::isKeyDown(const SDL_Scancode key)
+{
+    if (keyStates != nullptr)
+    {
+        if (keyStates[key] == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    return false;
+}
+
+bool InputHandler::isKeyDown(const int key)
 {
     if (keyStates != nullptr)
     {

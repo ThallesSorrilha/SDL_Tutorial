@@ -4,9 +4,9 @@
 
 Map::Map(int arr[defaultHeightBlocks][defaultWidthBlocks])
 {
-    dirt = TextureManager::loadTexture("assets/Dirt_72.png");
-    grass = TextureManager::loadTexture("assets/Grass_72.png");
-    water = TextureManager::loadTexture("assets/Water_72.png");
+    dirt = TextureManager::loadTexture("assets/sprites/Dirt_72.png");
+    grass = TextureManager::loadTexture("assets/sprites/Grass_72.png");
+    water = TextureManager::loadTexture("assets/sprites/Water_72.png");
 
     loadMap(arr);
 

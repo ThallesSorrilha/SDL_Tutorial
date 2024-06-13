@@ -1,5 +1,0 @@
-#pragma once
-
-#include <SDL.h>
-
-SDL_Scancode control1[4] = {SDL_SCANCODE_UP, SDL_SCANCODE_RIGHT, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT};

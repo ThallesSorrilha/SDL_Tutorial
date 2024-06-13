@@ -15,7 +15,8 @@ public:
 
     static void update();
 
-    static bool isKeyDown(SDL_Scancode key);
+    static bool isKeyDown(const SDL_Scancode key);
+    static bool isKeyDown(const int key);
     static void onKeyDown();
     static void onKeyUp();
 };

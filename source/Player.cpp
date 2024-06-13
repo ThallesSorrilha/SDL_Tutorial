@@ -1,9 +1,8 @@
 #include <iostream>
 
 #include "Player.h"
-#include "InputHandler.h"
 
-Player::Player(const GOLoader loader) : GameObject(loader)
+Player::Player(const GOLoader loader, int controlMap[4]) : GameObject(loader), control(controlMap)
 {
     animation.gifFrameDelay = 200;
 }
@@ -18,25 +17,27 @@ void Player::handleInput()
 
     moving = true;
 
-    if (InputHandler::isKeyDown(SDL_SCANCODE_RIGHT))
+    control.handleInput();
+
+    if (control.right)
     {
         x += 1;
         animation.rowFrame = 3;
     }
 
-    if (InputHandler::isKeyDown(SDL_SCANCODE_LEFT))
+    if (control.left)
     {
         x -= 1;
         animation.rowFrame = 2;
     }
 
-    if (InputHandler::isKeyDown(SDL_SCANCODE_UP))
+    if (control.up)
     {
         y += 1;
         animation.rowFrame = 1;
     }
 
-    if (InputHandler::isKeyDown(SDL_SCANCODE_DOWN))
+    if (control.down)
     {
         y -= 1;
         animation.rowFrame = 0;

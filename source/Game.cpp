@@ -8,6 +8,7 @@
 #include "Definitions.h"
 
 #include "../assets/maps/level1.h"
+#include "../assets/controls/controls.h"
 
 SDL_Renderer *Game::renderer = nullptr;
 bool Game::run = false;
@@ -38,8 +39,8 @@ void Game::init(const char *title, int xPosition, int yPosition, int width, int 
     }
 
     map = new Map(level1);
-    gameObjects.push_back(new Enemy(GOLoader{"assets/Enemy_72.png", 0, 0, defaultBlockSize, defaultBlockSize}));
-    gameObjects.push_back(new Player(GOLoader{"assets/Player_72.png", 100, 100, defaultBlockSize, defaultBlockSize}));
+    gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 0, 0, defaultBlockSize, defaultBlockSize}));
+    gameObjects.push_back(new Player(GOLoader{"assets/sprites/Player_72.png", 100, 100, defaultBlockSize, defaultBlockSize}, control1));
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
     run = true;

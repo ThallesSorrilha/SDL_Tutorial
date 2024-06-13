@@ -5,7 +5,7 @@
 class Control
 {
 private:
-    SDL_Scancode controlMap[4];
+    int controlMap[4];
 
 public:
     bool up;
@@ -13,7 +13,7 @@ public:
     bool left;
     bool right;
 
-    Control(SDL_Scancode arr[4]);
+    Control(int arr[4]);
     ~Control();
     void handleInput();
 };
