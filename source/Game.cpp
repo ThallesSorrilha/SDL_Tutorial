@@ -55,7 +55,7 @@ void Game::update()
 {
     for (std::vector<GameObject *>::size_type i = 0; i < gameObjects.size(); i++)
     {
-        // map->updateMap();
+        map->updateMap();
         gameObjects[i]->update();
     }
 };

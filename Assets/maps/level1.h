@@ -10,3 +10,6 @@ int level1[9][12] = {
     {0, 0, 0, 0, 0, 2, 0, 0, 1, 1, 1, 1},
     {0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0}};
+
+// fazer um arquivo de texto e fazer o parse pelo C++
+// Ou XML - TinyXML2
