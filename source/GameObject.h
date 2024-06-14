@@ -10,6 +10,9 @@ class GameObject
 {
 protected:
     Vector2D position;
+    /*Vector2D velocity;
+    Vector2D acceleration;
+    Vector2D force;*/
     Animation animation;
     bool moving;
 
