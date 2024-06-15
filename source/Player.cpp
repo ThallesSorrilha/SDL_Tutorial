@@ -60,8 +60,8 @@ void Player::update()
 
     GameObject::update();
 
-    position.x += direction.x * 2;
-    position.y += direction.y * -2;
+    position.x += direction.x * 0.03;
+    position.y += direction.y * -0.03;
 }
 
 void Player::draw()

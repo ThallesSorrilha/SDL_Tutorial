@@ -1,20 +1,21 @@
+#include <cmath>
+
 #include "Animation.h"
 #include "TextureManager.h"
-
-#include <iostream>
+#include "Definitions.h"
 
 Animation::Animation(const GOLoader loader)
 {
     texture = TextureManager::loadTexture(loader.textureSheet);
 
     srcRect.x = srcRect.y = 0;
-    srcRect.w = (int)loader.width;
-    srcRect.h = (int)loader.height;
+    srcRect.w = std::round(loader.width * defaultBlockSize);
+    srcRect.h = std::round(loader.height * defaultBlockSize);
 
-    destRect.x = (int)loader.xPosition;
-    destRect.y = (int)loader.yPosition;
-    destRect.w = (int)loader.width;
-    destRect.h = (int)loader.height;
+    destRect.x = std::round(loader.xPosition * defaultBlockSize);
+    destRect.y = std::round(loader.yPosition * defaultBlockSize);
+    destRect.w = std::round(loader.width * defaultBlockSize);
+    destRect.h = std::round(loader.height * defaultBlockSize);
 }
 
 Animation::~Animation() {}
@@ -27,8 +28,8 @@ void Animation::update(const bool gif, const float positionX, const float positi
     }
     srcRect.x = columnFrame * defaultBlockSize;
     srcRect.y = rowFrame * defaultBlockSize;
-    destRect.x = (int) positionX;
-    destRect.y = (int) positionY;
+    destRect.x = std::round(positionX * defaultBlockSize);
+    destRect.y = std::round(positionY * defaultBlockSize);
 }
 
 void Animation::draw()
