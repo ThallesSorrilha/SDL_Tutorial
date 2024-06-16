@@ -7,8 +7,8 @@ Enemy::Enemy(const GOLoader loader) : GameObject(loader)
 
 void Enemy::update()
 {
-    position.x += 0.01;
-    position.y += 0.01;
+    force.x = 10;
+    force.y = 10;
     GameObject::update();
 }
 

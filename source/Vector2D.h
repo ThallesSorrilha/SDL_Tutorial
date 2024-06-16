@@ -12,10 +12,16 @@ public:
     float length() const;
     void normalize(const int limit = 0);
 
+    friend Vector2D operator+(const Vector2D &v1, const float num);
+    friend Vector2D operator-(const Vector2D &v1, const float num);
+    friend Vector2D operator*(const Vector2D &v1, const float num);
+    friend Vector2D operator/(const Vector2D &v1, const float num);
+
     friend Vector2D operator+(const Vector2D &v1, const Vector2D &v2);
     friend Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
     friend Vector2D operator*(const Vector2D &v1, const Vector2D &v2);
     friend Vector2D operator/(const Vector2D &v1, const Vector2D &v2);
+    void operator=(const Vector2D &v1);
 
     friend void operator+=(Vector2D &v1, const Vector2D &v2);
     friend void operator-=(Vector2D &v1, const Vector2D &v2);

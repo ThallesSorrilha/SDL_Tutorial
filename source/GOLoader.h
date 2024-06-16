@@ -9,4 +9,5 @@ struct GOLoader
     float yPosition;
     float width;
     float height;
+    float mass;
 };

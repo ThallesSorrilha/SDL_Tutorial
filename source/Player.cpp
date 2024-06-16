@@ -52,6 +52,9 @@ void Player::handleInput()
     }
 
     direction.normalize(1);
+
+    force.x = direction.x * 10;
+    force.y = direction.y * 10;
 }
 
 void Player::update()

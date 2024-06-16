@@ -23,6 +23,8 @@ void Vector2D::normalize(const int limit)
     }
 }
 
+// +(vector, vector)
+
 Vector2D operator+(const Vector2D &v1, const Vector2D &v2)
 {
     return Vector2D(v1.x + v2.x, v1.y + v2.y);
@@ -42,6 +44,36 @@ Vector2D operator/(const Vector2D &v1, const Vector2D &v2)
 {
     return Vector2D(v1.x / v2.x, v1.y / v2.y);
 }
+
+void Vector2D::operator=(const Vector2D &v)
+{
+    this->x = v.x;
+    this->y = v.y;
+}
+
+// +(vector, float)
+
+Vector2D operator+(const Vector2D &v1, const float num)
+{
+    return Vector2D(v1.x + num, v1.y + num);
+}
+
+Vector2D operator-(const Vector2D &v1, const float num)
+{
+    return Vector2D(v1.x - num, v1.y - num);
+}
+
+Vector2D operator*(const Vector2D &v1, const float num)
+{
+    return Vector2D(v1.x * num, v1.y * num);
+}
+
+Vector2D operator/(const Vector2D &v1, const float num)
+{
+    return Vector2D(v1.x / num, v1.y / num);
+}
+
+// +=(vector, vector)
 
 void operator+=(Vector2D &v1, const Vector2D &v2)
 {
