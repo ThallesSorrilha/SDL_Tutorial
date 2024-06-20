@@ -27,4 +27,9 @@ public:
     friend void operator-=(Vector2D &v1, const Vector2D &v2);
     friend void operator*=(Vector2D &v1, const Vector2D &v2);
     friend void operator/=(Vector2D &v1, const Vector2D &v2);
+
+    friend void operator+=(Vector2D &v1, const float num);
+    friend void operator-=(Vector2D &v1, const float num);
+    friend void operator*=(Vector2D &v1, const float num);
+    friend void operator/=(Vector2D &v1, const float num);
 };

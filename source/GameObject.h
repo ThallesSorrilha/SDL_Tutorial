@@ -5,28 +5,24 @@
 #include "Vector2D.h"
 #include "Animation.h"
 #include "GOLoader.h"
+#include "Physics.h"
 
 class GameObject
 {
 protected:
     Vector2D position;
-    float mass;
     Vector2D force;
+
+    Physics physics;
     Animation animation;
 
     // colocar em class Animation
     bool moving;
 
-    // colocar em class Physics
-    Vector2D velocity;
-    Vector2D acceleration;
-
-
 public:
     GameObject(const GOLoader loader);
     ~GameObject();
 
-    void physics();
     virtual void update();
     virtual void draw();
 };

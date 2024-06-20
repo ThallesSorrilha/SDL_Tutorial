@@ -98,3 +98,29 @@ void operator/=(Vector2D &v1, const Vector2D &v2)
     v1.x /= v2.x;
     v1.y /= v2.y;
 }
+
+// +=(vector, float)
+
+void operator+=(Vector2D &v1, const float num)
+{
+    v1.x += num;
+    v1.y += num;
+}
+
+void operator-=(Vector2D &v1, const float num)
+{
+    v1.x -= num;
+    v1.y -= num;
+}
+
+void operator*=(Vector2D &v1, const float num)
+{
+    v1.x *= num;
+    v1.y *= num;
+}
+
+void operator/=(Vector2D &v1, const float num)
+{
+    v1.x /= num;
+    v1.y /= num;
+}

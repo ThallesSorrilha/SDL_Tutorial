@@ -39,7 +39,7 @@ void Game::init(const char *title, int xPosition, int yPosition, int width, int 
     }
 
     map = new Map(level1);
-    gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 1, 1, 1, 1, 30}));
+    // gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 1, 1, 1, 1, 30}));
     gameObjects.push_back(new Player(GOLoader{"assets/sprites/Player_72.png", 0, 0, 1, 1, 30}, control1));
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);

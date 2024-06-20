@@ -53,18 +53,13 @@ void Player::handleInput()
 
     direction.normalize(1);
 
-    force.x = direction.x * 10;
-    force.y = direction.y * 10;
+    physics.addForce(force, direction * 1000);
 }
 
 void Player::update()
 {
-    handleInput();
-
+    Player::handleInput();
     GameObject::update();
-
-    position.x += direction.x * 0.03;
-    position.y += direction.y * -0.03;
 }
 
 void Player::draw()
