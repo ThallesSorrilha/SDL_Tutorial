@@ -7,7 +7,7 @@ Enemy::Enemy(const GOLoader loader) : GameObject(loader)
 
 void Enemy::update()
 {
-    physics.addForce(force, 10, 10);
+    physics.force += 1000;
     GameObject::update();
 }
 

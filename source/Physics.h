@@ -1,19 +1,20 @@
 #pragma once
 
 #include "Vector2D.h"
+#include "GOLoader.h"
 
 class Physics
 {
 public:
+    Vector2D position;
+    Vector2D force;
+    float mass;
     Vector2D velocity;
     Vector2D acceleration;
-    float mass;
 
-    Physics(float mass);
+    Physics(const GOLoader loader);
     ~Physics();
 
-    void update(Vector2D &force, Vector2D &position);
-    void addForce(Vector2D &force, Vector2D add);
-    void addForce(Vector2D &force, float x, float y);
-    void kinematics(Vector2D &force, Vector2D &position);
+    void update();
+    void kinematics();
 };

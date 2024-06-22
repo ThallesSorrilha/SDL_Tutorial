@@ -11,4 +11,5 @@ const float defaultFrameDelayinSeconds = defaultFrameDelay / 1000.0f;
 const int defaultGifFrameDelay = 250;
 const int defaultGifSteps = 4;
 
-const float defaultDynamicFrictionCoefficient = 300;
+const float defaultDynamicFrictionCoefficient = 1;
+const float gravity = 10;

@@ -6,7 +6,7 @@
 #include "Definitions.h"
 #include "GOLoader.h"
 
-GameObject::GameObject(const GOLoader loader) : animation(loader), physics(loader.mass), position(loader.xPosition, loader.yPosition), force(0, 0)
+GameObject::GameObject(const GOLoader loader) : animation(loader), physics(loader)
 {
     moving = false;
 }
@@ -15,13 +15,13 @@ GameObject::~GameObject() {}
 
 void GameObject::update()
 {
-    physics.update(force, position);
+    physics.update();
 
     if (!moving)
     {
         animation.columnFrame = 0;
     }
-    animation.update(moving, position.x, position.y);
+    animation.update(moving, physics.position.x, physics.position.y);
 }
 
 void GameObject::draw()

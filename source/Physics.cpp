@@ -1,51 +1,34 @@
 #include "Physics.h"
 #include "Definitions.h"
 
-//
 #include <iostream>
 
-Physics::Physics(float mass) : velocity(0, 0), acceleration(0, 0)
+Physics::Physics(const GOLoader loader) : force(0, 0), position(loader.xPosition, loader.yPosition), velocity(0, 0), acceleration(0, 0)
 {
-    this->mass = mass;
+    this->mass = loader.mass;
 }
 
 Physics::~Physics() {}
 
-void Physics::update(Vector2D &force, Vector2D &position)
+void Physics::update()
 {
-    Physics::kinematics(force, position);
-    force = 0;
+    Physics::kinematics();
+    this->force = 0;
 }
 
-void Physics::addForce(Vector2D &force, Vector2D add)
+void Physics::kinematics()
 {
-    force += add;
+    //std::cout << "force.x:" << this->force.x << " force.y:" << this->force.y << std::endl;
+
+    acceleration = (force - (velocity * (gravity * mass * defaultDynamicFrictionCoefficient))) / mass;
+    //std::cout << "acceleration.x:" << this->acceleration.x << " acceleration.y:" << this->acceleration.y << std::endl;
+
+    velocity += (acceleration * defaultFrameDelayinSeconds);
+    //std::cout << "velocity.x:" << this->velocity.x << " velocity.y:" << this->velocity.y << std::endl;
+
+    position.x += (velocity.x * defaultFrameDelayinSeconds);
+    position.y -= (velocity.y * defaultFrameDelayinSeconds);
+    //std::cout << "position.x:" << this->position.x << " position.y:" << this->position.y << std::endl;
+
+    //std::cout << "" << std::endl;
 }
-
-void Physics::addForce(Vector2D &force, float x, float y)
-{
-    force.x += x;
-    force.y += y;
-}
-
-void Physics::kinematics(Vector2D &force, Vector2D &position)
-{
-    acceleration = (force - (velocity * defaultDynamicFrictionCoefficient)) / mass;
-
-    /*
-        acceleration = force / mass;
-        std::cout << "acceleration.x("<<acceleration.x<<") = force.x("<<force.x<<") * mass("<<mass<<");" << std::endl;
-    */
-
-    velocity += acceleration * defaultFrameDelayinSeconds;
-    std::cout << "velocity.x(" << velocity.x << ") += acceleration.x(" << acceleration.x << ") * defaultFrameDelayinSeconds(" << defaultFrameDelayinSeconds << ");" << std::endl;
-
-    float sav = position.x;
-    position.x += velocity.x * defaultFrameDelayinSeconds;
-    position.y -= velocity.y * defaultFrameDelayinSeconds;
-    std::cout << "position.x(" << position.x << ") = position.x(" << sav << ") + velocity.x(" << velocity.x << ") * defaultFrameDelayinSeconds(" << defaultFrameDelayinSeconds << ");" << std::endl;
-
-    std::cout << "" << std::endl;
-}
-
-// 0,03053

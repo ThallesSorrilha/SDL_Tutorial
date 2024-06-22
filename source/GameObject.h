@@ -10,14 +10,10 @@
 class GameObject
 {
 protected:
-    Vector2D position;
-    Vector2D force;
-
     Physics physics;
     Animation animation;
 
-    // colocar em class Animation
-    bool moving;
+    bool moving; // não faz mt sentido - pode transformar em função
 
 public:
     GameObject(const GOLoader loader);
