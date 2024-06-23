@@ -6,6 +6,7 @@
 class Physics
 {
 public:
+    Vector2D direction;
     Vector2D position;
     Vector2D force;
     float mass;
@@ -17,4 +18,5 @@ public:
 
     void update();
     void kinematics();
+    bool isMoving();
 };

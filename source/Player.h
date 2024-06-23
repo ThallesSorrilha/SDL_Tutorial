@@ -9,11 +9,10 @@
 
 class Player : public GameObject
 {
-private:
-    Vector2D direction;
-    Control control;
 
 public:
+    Control control;
+
     Player(const GOLoader loader, int controlMap[4]);
     void handleInput();
     void update() override;

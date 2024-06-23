@@ -12,10 +12,7 @@ public:
     float length() const;
     void normalize(const int limit = 0);
 
-    friend Vector2D operator+(const Vector2D &v1, const float num);
-    friend Vector2D operator-(const Vector2D &v1, const float num);
-    friend Vector2D operator*(const Vector2D &v1, const float num);
-    friend Vector2D operator/(const Vector2D &v1, const float num);
+    // + (vector, vector)
 
     friend Vector2D operator+(const Vector2D &v1, const Vector2D &v2);
     friend Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
@@ -23,10 +20,22 @@ public:
     friend Vector2D operator/(const Vector2D &v1, const Vector2D &v2);
     void operator=(const Vector2D &v1);
 
+    // + (vector, num)
+
+    friend Vector2D operator+(const Vector2D &v1, const float num);
+    friend Vector2D operator-(const Vector2D &v1, const float num);
+    friend Vector2D operator*(const Vector2D &v1, const float num);
+    friend Vector2D operator/(const Vector2D &v1, const float num);
+    void operator=(const float num);
+
+    // += (vector, vector)
+
     friend void operator+=(Vector2D &v1, const Vector2D &v2);
     friend void operator-=(Vector2D &v1, const Vector2D &v2);
     friend void operator*=(Vector2D &v1, const Vector2D &v2);
     friend void operator/=(Vector2D &v1, const Vector2D &v2);
+
+    // += (vector, float)
 
     friend void operator+=(Vector2D &v1, const float num);
     friend void operator-=(Vector2D &v1, const float num);

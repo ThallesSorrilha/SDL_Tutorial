@@ -3,22 +3,24 @@
 #include <SDL.h>
 
 #include "GOLoader.h"
-#include "Definitions.h"
+#include "Vector2D.h"
 
 class Animation
 {
 public:
     SDL_Texture *texture;
     SDL_Rect srcRect, destRect;
-    int columnFrame = 0;
-    int rowFrame = 0;
-    int gifFrameDelay = defaultGifFrameDelay;
-    int gifSteps = defaultGifSteps;
+    int columnFrame;
+    int rowFrame;
+    int gifFrameDelay;
+    int gifSteps;
 
     Animation(const GOLoader loader);
     ~Animation();
 
-    void update(const bool gif, const float positionX, const float positionY);
-    void draw();
+    void update(const bool gif, const Vector2D &position, const Vector2D &direction);
+    void const draw();
     void gif();
+
+    void face(const Vector2D &direction);
 };

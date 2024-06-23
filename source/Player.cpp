@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Definitions.h"
 
 Player::Player(const GOLoader loader, int controlMap[4]) : GameObject(loader), control(controlMap)
 {
@@ -7,51 +8,31 @@ Player::Player(const GOLoader loader, int controlMap[4]) : GameObject(loader), c
 
 void Player::handleInput()
 {
-    direction.x = 0;
-    direction.y = 0;
-
-    int x = 0;
-    int y = 0;
-
-    moving = true; // retirar
+    physics.direction.x = 0;
+    physics.direction.y = 0;
 
     control.handleInput();
 
     if (control.right)
     {
-        x += 1;
-        animation.rowFrame = 3; // mudar
+        physics.direction.x += 1;
     }
-
     if (control.left)
     {
-        x -= 1;
-        animation.rowFrame = 2;
+        physics.direction.x -= 1;
     }
-
     if (control.up)
     {
-        y += 1;
-        animation.rowFrame = 1;
+        physics.direction.y += 1;
     }
-
     if (control.down)
     {
-        y -= 1;
-        animation.rowFrame = 0;
+        physics.direction.y -= 1;
     }
 
-    direction.x = x;
-    direction.y = y;
+    physics.direction.normalize(1);
 
-    if (direction.length() == 0) // legado
-    {
-        moving = false;
-    }
-
-    direction.normalize(1);
-
-    physics.force += direction * physics.mass * 18;
+    physics.force += physics.direction * (physics.mass * gravity * 4);
 }
 
 void Player::update()

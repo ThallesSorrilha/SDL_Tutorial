@@ -1,9 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy(const GOLoader loader) : GameObject(loader)
-{
-    moving = true;
-}
+Enemy::Enemy(const GOLoader loader) : GameObject(loader) {}
 
 void Enemy::update()
 {
