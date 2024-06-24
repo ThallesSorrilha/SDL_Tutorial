@@ -6,23 +6,27 @@
 #include "Definitions.h"
 #include "GOLoader.h"
 
-GameObject::GameObject(const GOLoader loader) : animation(loader), physics(loader) {}
+GameObject::GameObject(const GOLoader loader) : animation(loader), physics(loader), direction(0, 0) {}
 
 GameObject::~GameObject() {}
 
 void GameObject::update()
 {
-    physics.update();
-
-    bool moving = physics.isDirect();
-    if (!moving)
-    {
-        animation.columnFrame = 0;
-    }
-    animation.update(moving, physics.position, physics.direction);
 }
 
 void GameObject::draw() const
 {
     animation.draw();
+}
+
+bool GameObject::isDirect() const
+{
+    if (std::abs(direction.x) < 0.1F && std::abs(direction.y) < 0.1F)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }

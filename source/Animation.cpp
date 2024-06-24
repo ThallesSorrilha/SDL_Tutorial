@@ -25,8 +25,6 @@ Animation::~Animation() {}
 
 void Animation::update(const bool gif, const Vector2D &position, const Vector2D &direction)
 {
-    Animation::face(direction);
-
     if (gif)
     {
         Animation::gif();

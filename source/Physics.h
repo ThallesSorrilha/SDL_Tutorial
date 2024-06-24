@@ -6,7 +6,6 @@
 class Physics
 {
 public:
-    Vector2D direction;
     Vector2D position;
     Vector2D force;
     float mass;
@@ -16,7 +15,7 @@ public:
     Physics(const GOLoader loader);
     ~Physics();
 
-    void update();
+    void update(const Vector2D direction, float defaultSpeed);
     void kinematics();
-    bool isDirect() const;
+    void directionInForce(Vector2D direction, float defaultSpeed);
 };

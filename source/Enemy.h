@@ -11,4 +11,5 @@ public:
     Enemy(const GOLoader loader);
     virtual void update() override;
     virtual void draw() const override;
+    virtual void randomStroll();
 };

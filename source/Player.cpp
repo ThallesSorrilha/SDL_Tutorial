@@ -8,36 +8,41 @@ Player::Player(const GOLoader loader, int controlMap[4]) : GameObject(loader), c
 
 void Player::handleInput()
 {
-    physics.direction = 0;
-
     control.handleInput();
 
     if (control.right)
     {
-        physics.direction.x += 1;
+        direction.x += 1;
     }
     if (control.left)
     {
-        physics.direction.x -= 1;
+        direction.x -= 1;
     }
     if (control.up)
     {
-        physics.direction.y += 1;
+        direction.y += 1;
     }
     if (control.down)
     {
-        physics.direction.y -= 1;
+        direction.y -= 1;
     }
-
-    physics.direction.normalize(1);
-
-    physics.force += physics.direction * (physics.mass * gravity * 4);
 }
 
 void Player::update()
 {
     Player::handleInput();
+    physics.update(direction, 2);
     GameObject::update();
+
+    bool moving = this->isDirect();
+    if (!moving)
+    {
+        animation.columnFrame = 0;
+    }
+
+    animation.update(moving, physics.position, direction);
+    animation.face(direction);
+    direction = 0;
 }
 
 void Player::draw() const

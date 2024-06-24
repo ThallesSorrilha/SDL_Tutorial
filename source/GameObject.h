@@ -11,6 +11,7 @@ class GameObject
 {
 
 public:
+    Vector2D direction;
     Physics physics;
     Animation animation;
 
@@ -19,4 +20,6 @@ public:
 
     virtual void update();
     virtual void draw() const;
+    
+    bool isDirect() const;
 };

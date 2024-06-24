@@ -3,24 +3,26 @@
 
 #include <iostream>
 
-Physics::Physics(const GOLoader loader) : force(0, 0), position(loader.xPosition, loader.yPosition), velocity(0, 0), acceleration(0, 0), direction(0, 0)
+Physics::Physics(const GOLoader loader) : force(0, 0), position(loader.xPosition, loader.yPosition), velocity(0, 0), acceleration(0, 0)
 {
     this->mass = loader.mass;
 }
 
 Physics::~Physics() {}
 
-void Physics::update()
+void Physics::update(const Vector2D direction, float defaultSpeed)
 {
+    Physics::directionInForce(direction, defaultSpeed);
     Physics::kinematics();
-    this->force = 0;
+    force = 0;
 }
 
 void Physics::kinematics()
 {
     // std::cout << "force.x:" << this->force.x << " force.y:" << this->force.y << std::endl;
 
-    acceleration = (force - (velocity * (gravity * mass * defaultDynamicFrictionCoefficient))) / mass;
+    // acceleration = (force - (velocity * (gravity * mass * defaultDynamicFrictionCoefficient))) / mass;
+    acceleration = ((force / mass) - (velocity * (gravity * defaultDynamicFrictionCoefficient)));
     // std::cout << "acceleration.x:" << this->acceleration.x << " acceleration.y:" << this->acceleration.y << std::endl;
 
     velocity += (acceleration * defaultFrameDelayinSeconds);
@@ -30,17 +32,11 @@ void Physics::kinematics()
     position.y -= (velocity.y * defaultFrameDelayinSeconds);
     // std::cout << "position.x:" << this->position.x << " position.y:" << this->position.y << std::endl;
 
-    //std::cout << "" << std::endl;
+    // std::cout << "" << std::endl;
 }
 
-bool Physics::isDirect() const
+void Physics::directionInForce(Vector2D direction, float defaultSpeed)
 {
-    if (std::abs(direction.x) < 0.1F && std::abs(direction.y) < 0.1F)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
+    direction.normalize(1);
+    force += direction * (mass * gravity * defaultDynamicFrictionCoefficient * defaultSpeed);
 }
