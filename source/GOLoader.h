@@ -5,9 +5,9 @@
 struct GOLoader
 {
     const char *textureSheet;
-    float xPosition;
-    float yPosition;
-    float width;
-    float height;
-    float mass;
+    const float xPosition;
+    const float yPosition;
+    const float width;
+    const float height;
+    const float mass;
 };

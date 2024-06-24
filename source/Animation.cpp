@@ -38,7 +38,7 @@ void Animation::update(const bool gif, const Vector2D &position, const Vector2D 
     destRect.y = std::round(position.y * defaultBlockSize);
 }
 
-void const Animation::draw()
+void Animation::draw() const
 {
     TextureManager::draw(texture, srcRect, destRect);
 }

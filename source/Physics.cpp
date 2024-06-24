@@ -33,7 +33,7 @@ void Physics::kinematics()
     //std::cout << "" << std::endl;
 }
 
-bool Physics::isMoving()
+bool Physics::isDirect() const
 {
     if (std::abs(direction.x) < 0.1F && std::abs(direction.y) < 0.1F)
     {

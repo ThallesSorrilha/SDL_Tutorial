@@ -18,5 +18,5 @@ public:
 
     void update();
     void kinematics();
-    bool isMoving();
+    bool isDirect() const;
 };

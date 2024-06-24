@@ -10,5 +10,5 @@ class Enemy : public GameObject
 public:
     Enemy(const GOLoader loader);
     virtual void update() override;
-    virtual void draw() override;
+    virtual void draw() const override;
 };

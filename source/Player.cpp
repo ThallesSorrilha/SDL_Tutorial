@@ -8,8 +8,7 @@ Player::Player(const GOLoader loader, int controlMap[4]) : GameObject(loader), c
 
 void Player::handleInput()
 {
-    physics.direction.x = 0;
-    physics.direction.y = 0;
+    physics.direction = 0;
 
     control.handleInput();
 
@@ -41,7 +40,7 @@ void Player::update()
     GameObject::update();
 }
 
-void Player::draw()
+void Player::draw() const
 {
     GameObject::draw();
 }

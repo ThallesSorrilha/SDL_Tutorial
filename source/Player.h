@@ -16,5 +16,5 @@ public:
     Player(const GOLoader loader, int controlMap[4]);
     void handleInput();
     void update() override;
-    void draw() override;
+    void draw() const override;
 };

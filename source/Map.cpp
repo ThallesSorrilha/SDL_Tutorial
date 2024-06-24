@@ -19,7 +19,7 @@ Map::Map(int arr[defaultHeightBlocks][defaultWidthBlocks])
 
 Map::~Map() {}
 
-void Map::loadMap(int arr[defaultHeightBlocks][defaultWidthBlocks])
+void Map::loadMap(const int arr[defaultHeightBlocks][defaultWidthBlocks])
 {
     for (int row = 0; row < defaultHeightBlocks; row++)
     {
@@ -38,7 +38,7 @@ void Map::gifMap()
 
 void Map::updateMap()
 {
-    gifMap();
+    Map::gifMap();
 }
 
 void Map::drawMap()

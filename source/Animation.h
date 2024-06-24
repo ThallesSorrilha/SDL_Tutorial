@@ -19,7 +19,7 @@ public:
     ~Animation();
 
     void update(const bool gif, const Vector2D &position, const Vector2D &direction);
-    void const draw();
+    void draw() const;
     void gif();
 
     void face(const Vector2D &direction);

@@ -8,7 +8,7 @@ void Enemy::update()
     GameObject::update();
 }
 
-void Enemy::draw()
+void Enemy::draw() const
 {
     GameObject::draw();
 }

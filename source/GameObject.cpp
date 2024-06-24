@@ -14,7 +14,7 @@ void GameObject::update()
 {
     physics.update();
 
-    bool moving = physics.isMoving();
+    bool moving = physics.isDirect();
     if (!moving)
     {
         animation.columnFrame = 0;
@@ -22,7 +22,7 @@ void GameObject::update()
     animation.update(moving, physics.position, physics.direction);
 }
 
-void GameObject::draw()
+void GameObject::draw() const
 {
     animation.draw();
 }
