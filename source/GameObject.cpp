@@ -30,3 +30,8 @@ bool GameObject::isDirect() const
         return true;
     }
 }
+
+void GameObject::clean() const
+{
+    animation.clean();
+}

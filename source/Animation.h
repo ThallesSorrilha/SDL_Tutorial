@@ -23,4 +23,5 @@ public:
     void gif();
 
     void face(const Vector2D &direction);
+    void clean() const;
 };

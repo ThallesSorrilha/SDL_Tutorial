@@ -65,3 +65,8 @@ void Animation::face(const Vector2D &direction)
         rowFrame = 0;
     }
 }
+
+void Animation::clean() const
+{
+    SDL_DestroyTexture(texture);
+}

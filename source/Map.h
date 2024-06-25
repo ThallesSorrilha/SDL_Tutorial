@@ -20,4 +20,5 @@ public:
     void gifMap();
     void updateMap();
     void drawMap();
+    void cleanMap() const;
 };

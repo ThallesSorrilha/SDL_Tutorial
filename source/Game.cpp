@@ -76,6 +76,12 @@ void Game::draw()
 
 void Game::clean()
 {
+    map->cleanMap();
+    for (std::vector<GameObject *>::size_type i = 0; i < gameObjects.size(); i++)
+    {
+        gameObjects[i]->clean();
+    }
+
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();

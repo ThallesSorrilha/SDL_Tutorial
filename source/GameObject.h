@@ -22,4 +22,5 @@ public:
     virtual void draw() const;
     
     bool isDirect() const;
+    void clean() const;
 };

@@ -73,3 +73,10 @@ void Map::drawMap()
         }
     }
 }
+
+void Map::cleanMap() const
+{
+    SDL_DestroyTexture(dirt);   
+    SDL_DestroyTexture(grass);
+    SDL_DestroyTexture(water);
+}
