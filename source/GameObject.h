@@ -11,8 +11,12 @@ class GameObject
 {
 
 public:
+    Vector2D position;
+    Vector2D dimension;
+
     Vector2D direction;
     Physics physics;
+
     Animation animation;
 
     GameObject(const GOLoader loader);
@@ -20,7 +24,7 @@ public:
 
     virtual void update();
     virtual void draw() const;
-    
+
     bool isDirect() const;
     void clean() const;
 };

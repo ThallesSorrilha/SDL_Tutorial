@@ -3,21 +3,21 @@
 
 #include <iostream>
 
-Physics::Physics(const GOLoader loader) : force(0, 0), position(loader.xPosition, loader.yPosition), velocity(0, 0), acceleration(0, 0)
+Physics::Physics(float mass) : force(0, 0), velocity(0, 0), acceleration(0, 0)
 {
-    this->mass = loader.mass;
+    this->mass = mass;
 }
 
 Physics::~Physics() {}
 
-void Physics::update(const Vector2D direction, float defaultSpeed)
+void Physics::update(Vector2D &direction, Vector2D &position, float defaultSpeed)
 {
     Physics::directionInForce(direction, defaultSpeed);
-    Physics::kinematics();
+    Physics::kinematics(position);
     force = 0;
 }
 
-void Physics::kinematics()
+void Physics::kinematics(Vector2D &position)
 {
     // std::cout << "force.x:" << this->force.x << " force.y:" << this->force.y << std::endl;
 
@@ -35,7 +35,7 @@ void Physics::kinematics()
     // std::cout << "" << std::endl;
 }
 
-void Physics::directionInForce(Vector2D direction, float defaultSpeed)
+void Physics::directionInForce(Vector2D &direction, float defaultSpeed)
 {
     direction.normalize(1);
     force += direction * (mass * gravity * defaultDynamicFrictionCoefficient * defaultSpeed);

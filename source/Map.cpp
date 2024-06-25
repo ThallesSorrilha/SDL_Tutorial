@@ -10,8 +10,11 @@ Map::Map(int arr[defaultHeightBlocks][defaultWidthBlocks])
 
     loadMap(arr);
 
-    src.w = dest.w = defaultBlockSize;
-    src.h = dest.h = defaultBlockSize;
+    src.w = defaultSpriteUnit;
+    src.h = defaultSpriteUnit;
+
+    dest.w = defaultBlockSize;
+    dest.h = defaultBlockSize;
 
     src.x = src.y = 0;
     dest.x = dest.y = 0;
@@ -32,8 +35,8 @@ void Map::loadMap(const int arr[defaultHeightBlocks][defaultWidthBlocks])
 
 void Map::gifMap()
 {
-    int column = int(SDL_GetTicks() / 2000) % defaultGifSteps;
-    src.x = column * defaultBlockSize;
+    int columnFrame = int(SDL_GetTicks() / 2000) % defaultGifSteps;
+    src.x = columnFrame * defaultSpriteUnit;
 }
 
 void Map::updateMap()
@@ -76,7 +79,7 @@ void Map::drawMap()
 
 void Map::cleanMap() const
 {
-    SDL_DestroyTexture(dirt);   
+    SDL_DestroyTexture(dirt);
     SDL_DestroyTexture(grass);
     SDL_DestroyTexture(water);
 }

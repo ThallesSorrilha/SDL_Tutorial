@@ -31,7 +31,7 @@ void Player::handleInput()
 void Player::update()
 {
     Player::handleInput();
-    physics.update(direction, 2);
+    physics.update(direction, position, 2);
     GameObject::update();
 
     bool moving = this->isDirect();
@@ -40,7 +40,7 @@ void Player::update()
         animation.columnFrame = 0;
     }
 
-    animation.update(moving, physics.position, direction);
+    animation.update(moving, position, direction);
     animation.face(direction);
     direction = 0;
 }

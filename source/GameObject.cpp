@@ -6,7 +6,9 @@
 #include "Definitions.h"
 #include "GOLoader.h"
 
-GameObject::GameObject(const GOLoader loader) : animation(loader), physics(loader), direction(0, 0) {}
+GameObject::GameObject(const GOLoader loader) : position(loader.xPosition, loader.yPosition),
+                                                dimension(loader.width, loader.height), direction(0, 0),
+                                                physics(loader.mass), animation(loader) {}
 
 GameObject::~GameObject() {}
 

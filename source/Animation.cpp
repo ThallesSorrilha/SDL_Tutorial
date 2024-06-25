@@ -7,8 +7,8 @@ Animation::Animation(const GOLoader loader)
     texture = TextureManager::loadTexture(loader.textureSheet);
 
     srcRect.x = srcRect.y = 0;
-    srcRect.w = std::round(loader.width * defaultBlockSize);
-    srcRect.h = std::round(loader.height * defaultBlockSize);
+    srcRect.w = std::round(loader.width * defaultSpriteUnit);
+    srcRect.h = std::round(loader.height * defaultSpriteUnit);
 
     destRect.x = std::round(loader.xPosition * defaultBlockSize);
     destRect.y = std::round(loader.yPosition * defaultBlockSize);
@@ -30,8 +30,8 @@ void Animation::update(const bool gif, const Vector2D &position, const Vector2D 
         Animation::gif();
     }
 
-    srcRect.x = columnFrame * defaultBlockSize;
-    srcRect.y = rowFrame * defaultBlockSize;
+    srcRect.x = columnFrame * defaultSpriteUnit;
+    srcRect.y = rowFrame * defaultSpriteUnit;
     destRect.x = std::round(position.x * defaultBlockSize);
     destRect.y = std::round(position.y * defaultBlockSize);
 }

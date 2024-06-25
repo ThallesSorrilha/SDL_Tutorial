@@ -12,9 +12,9 @@ Enemy::Enemy(const GOLoader loader) : GameObject(loader) {}
 void Enemy::update()
 {
     Enemy::randomStroll();
-    physics.update(direction, 1);
+    physics.update(direction, position, 1);
     GameObject::update();
-    animation.update(true, physics.position, direction);
+    animation.update(true, position, direction);
     direction = 0;
 }
 
