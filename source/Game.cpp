@@ -15,6 +15,7 @@ bool Game::run = false;
 std::vector<GameObject *> Game::gameObjects;
 Map *Game::map = nullptr;
 SDL_Window *Game::window = nullptr;
+Collision *Game::collision = nullptr;
 
 void Game::init(const char *title, int xPosition, int yPosition, int width, int height, int flags)
 {
@@ -38,9 +39,10 @@ void Game::init(const char *title, int xPosition, int yPosition, int width, int 
         return;
     }
 
+    collision = new Collision();
     map = new Map(level1);
 
-    gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 4, 4, 1, 1, 300}));
+    gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 4, 4, 1, 1, 30}));
     gameObjects.push_back(new Player(GOLoader{"assets/sprites/Player_72.png", 0, 0, 1, 1, 30}, control1));
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
@@ -55,8 +57,17 @@ void Game::handleEvents()
 void Game::update()
 {
     map->updateMap();
+
     for (std::vector<GameObject *>::size_type i = 0; i < gameObjects.size(); i++)
     {
+        for (std::vector<GameObject *>::size_type j = i + 1; j < gameObjects.size(); j++)
+        {
+            bool coll = collision->checkCollision(gameObjects[i]->dimension, gameObjects[j]->dimension);
+            if (coll)
+            {
+                std::cout << "collision between " << gameObjects[i] << " and " << gameObjects[j] << std::endl;
+            }
+        }
         gameObjects[i]->update();
     }
 };

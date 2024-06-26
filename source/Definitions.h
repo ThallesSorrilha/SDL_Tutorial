@@ -1,6 +1,6 @@
 #pragma once
 
-const int defaultBlockSize = 36;
+const int defaultBlockSize = 72;
 const int defaultSpriteUnit = 72;
 
 const int defaultWidthBlocks = 12;

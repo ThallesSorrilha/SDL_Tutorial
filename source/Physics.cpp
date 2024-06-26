@@ -10,14 +10,14 @@ Physics::Physics(float mass) : force(0, 0), velocity(0, 0), acceleration(0, 0)
 
 Physics::~Physics() {}
 
-void Physics::update(Vector2D &direction, Vector2D &position, float defaultSpeed)
+void Physics::update(Vector2D &direction, float defaultSpeed)
 {
     Physics::directionInForce(direction, defaultSpeed);
-    Physics::kinematics(position);
+    Physics::kinematics();
     force = 0;
 }
 
-void Physics::kinematics(Vector2D &position)
+void Physics::kinematics()
 {
     // std::cout << "force.x:" << this->force.x << " force.y:" << this->force.y << std::endl;
 
@@ -27,10 +27,6 @@ void Physics::kinematics(Vector2D &position)
 
     velocity += (acceleration * defaultFrameDelayinSeconds);
     // std::cout << "velocity.x:" << this->velocity.x << " velocity.y:" << this->velocity.y << std::endl;
-
-    position.x += (velocity.x * defaultFrameDelayinSeconds);
-    position.y -= (velocity.y * defaultFrameDelayinSeconds);
-    // std::cout << "position.x:" << this->position.x << " position.y:" << this->position.y << std::endl;
 
     // std::cout << "" << std::endl;
 }

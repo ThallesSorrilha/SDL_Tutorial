@@ -12,10 +12,11 @@ Enemy::Enemy(const GOLoader loader) : GameObject(loader) {}
 void Enemy::update()
 {
     Enemy::randomStroll();
-    physics.update(direction, position, 1);
+    physics.update(direction, 0.4F);
+
     GameObject::update();
-    animation.update(true, position, direction);
-    direction = 0;
+
+    animation.update(true, dimension.position, direction);
 }
 
 void Enemy::draw() const
@@ -25,6 +26,8 @@ void Enemy::draw() const
 
 void Enemy::randomStroll()
 {
+    direction = 0;
+
     if (SDL_GetTicks() >= strollTime)
     {
         std::random_device seed;
@@ -34,16 +37,16 @@ void Enemy::randomStroll()
         std::uniform_int_distribution<> dis2(500, 2000);
 
         strollTime = dis2(gen) + SDL_GetTicks();
-        //std::cout << "strollTime: " << strollTime << std::endl;
+        // std::cout << "strollTime: " << strollTime << std::endl;
         randomNumber1 = dis(gen) - 1;
-        //std::cout << "direction.x: " << randomNumber1 << std::endl;
+        // std::cout << "direction.x: " << randomNumber1 << std::endl;
         randomNumber2 = dis(gen) - 1;
-        //std::cout << "direction.y: " << randomNumber2 << std::endl;
-        //std::cout << "" << std::endl;
+        // std::cout << "direction.y: " << randomNumber2 << std::endl;
+        // std::cout << "" << std::endl;
     }
     direction.x = randomNumber1;
-    //std::cout << "Sustained direction.x: " << direction.x << std::endl;
+    // std::cout << "Sustained direction.x: " << direction.x << std::endl;
     direction.y = randomNumber2;
-    //std::cout << "Sustained direction.y: " << direction.y << std::endl;
-    //std::cout << "" << std::endl;
+    // std::cout << "Sustained direction.y: " << direction.y << std::endl;
+    // std::cout << "" << std::endl;
 }

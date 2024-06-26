@@ -6,14 +6,13 @@
 #include "Animation.h"
 #include "GOLoader.h"
 #include "Physics.h"
+#include "Dimension.h"
 
 class GameObject
 {
 
 public:
-    Vector2D position;
-    Vector2D dimension;
-
+    Dimension dimension;
     Vector2D direction;
     Physics physics;
 

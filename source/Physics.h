@@ -14,7 +14,7 @@ public:
     Physics(float mass);
     ~Physics();
 
-    void update(Vector2D &direction, Vector2D &position, float defaultSpeed);
-    void kinematics(Vector2D &position);
+    void update(Vector2D &direction, float defaultSpeed);
+    void kinematics();
     void directionInForce(Vector2D &direction, float defaultSpeed);
 };
