@@ -3,10 +3,6 @@
 #include "Enemy.h"
 #include "Definitions.h"
 
-Uint32 strollTime = 0;
-int randomNumber1 = 0;
-int randomNumber2 = 0;
-
 Enemy::Enemy(const GOLoader loader) : GameObject(loader)
 {
     type = 1;
@@ -29,8 +25,6 @@ void Enemy::draw() const
 
 void Enemy::randomStroll()
 {
-    direction = 0;
-
     if (SDL_GetTicks() >= strollTime)
     {
         std::random_device seed;
@@ -41,20 +35,14 @@ void Enemy::randomStroll()
 
         strollTime = dis2(gen) + SDL_GetTicks();
         // std::cout << "strollTime: " << strollTime << std::endl;
-        randomNumber1 = dis(gen) - 1;
+        direction.x = dis(gen) - 1;
         // std::cout << "direction.x: " << randomNumber1 << std::endl;
-        randomNumber2 = dis(gen) - 1;
+        direction.y = dis(gen) - 1;
         // std::cout << "direction.y: " << randomNumber2 << std::endl;
         // std::cout << "" << std::endl;
     }
-    direction.x = randomNumber1;
-    // std::cout << "Sustained direction.x: " << direction.x << std::endl;
-    direction.y = randomNumber2;
-    // std::cout << "Sustained direction.y: " << direction.y << std::endl;
-    // std::cout << "" << std::endl;
 }
 
-void Enemy::collisionResolution(GameObject* other)
+void Enemy::collisionResolution(GameObject *other)
 {
-
 }

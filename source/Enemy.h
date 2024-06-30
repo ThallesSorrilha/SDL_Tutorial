@@ -8,6 +8,8 @@
 class Enemy : public GameObject
 {
 public:
+    Uint32 strollTime;
+
     Enemy(const GOLoader loader);
     virtual void update() override;
     virtual void draw() const override;
