@@ -12,4 +12,5 @@ public:
     virtual void update() override;
     virtual void draw() const override;
     virtual void randomStroll();
+    virtual void collisionResolution(GameObject* other) override;
 };

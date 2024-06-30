@@ -16,9 +16,9 @@ public:
     Map(int arr[defaultHeightBlocks][defaultWidthBlocks]);
     ~Map();
 
-    void loadMap(const int arr[defaultHeightBlocks][defaultWidthBlocks]);
-    void gifMap();
-    void updateMap();
-    void drawMap();
-    void cleanMap() const;
+    void load(const int arr[defaultHeightBlocks][defaultWidthBlocks]);
+    void gif();
+    void update();
+    void draw();
+    void clean() const;
 };

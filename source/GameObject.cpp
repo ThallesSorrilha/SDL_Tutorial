@@ -37,3 +37,7 @@ void GameObject::clean() const
 {
     animation.clean();
 }
+
+void GameObject::collisionResolution(GameObject* other)
+{
+}

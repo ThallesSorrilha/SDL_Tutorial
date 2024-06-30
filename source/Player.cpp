@@ -4,6 +4,7 @@
 Player::Player(const GOLoader loader, int controlMap[4]) : GameObject(loader), control(controlMap)
 {
     animation.gifFrameDelay = 200;
+    type = 0;
 }
 
 void Player::handleInput()
@@ -50,4 +51,15 @@ void Player::update()
 void Player::draw() const
 {
     GameObject::draw();
+}
+
+void Player::collisionResolution(GameObject *other)
+{
+
+    if (other->type == 1)
+    {
+        Vector2D v = dimension.calculateInvasion(other->dimension);
+        //std::cout << "Resolution: x = " << v.x << " | y = " << v.y << std::endl;
+        dimension.teleportRelative(dimension.calculateInvasion(other->dimension));
+    }
 }

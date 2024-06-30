@@ -13,17 +13,21 @@ class GameObject
 
 public:
     Dimension dimension;
-    Vector2D direction;
     Physics physics;
 
+    Vector2D direction;
+
     Animation animation;
+
+    int type;
 
     GameObject(const GOLoader loader);
     ~GameObject();
 
     virtual void update();
     virtual void draw() const;
+    virtual void clean() const;
+    virtual void collisionResolution(GameObject* other);
 
     bool isDirect() const;
-    void clean() const;
 };

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector2D.h"
+#include "Dimension.h"
 
 class Physics
 {

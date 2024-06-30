@@ -7,7 +7,10 @@ Uint32 strollTime = 0;
 int randomNumber1 = 0;
 int randomNumber2 = 0;
 
-Enemy::Enemy(const GOLoader loader) : GameObject(loader) {}
+Enemy::Enemy(const GOLoader loader) : GameObject(loader)
+{
+    type = 1;
+}
 
 void Enemy::update()
 {
@@ -49,4 +52,9 @@ void Enemy::randomStroll()
     direction.y = randomNumber2;
     // std::cout << "Sustained direction.y: " << direction.y << std::endl;
     // std::cout << "" << std::endl;
+}
+
+void Enemy::collisionResolution(GameObject* other)
+{
+
 }

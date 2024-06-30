@@ -8,7 +8,7 @@ Map::Map(int arr[defaultHeightBlocks][defaultWidthBlocks])
     grass = TextureManager::loadTexture("assets/sprites/Grass_72.png");
     water = TextureManager::loadTexture("assets/sprites/Water_72.png");
 
-    loadMap(arr);
+    load(arr);
 
     src.w = defaultSpriteUnit;
     src.h = defaultSpriteUnit;
@@ -22,7 +22,7 @@ Map::Map(int arr[defaultHeightBlocks][defaultWidthBlocks])
 
 Map::~Map() {}
 
-void Map::loadMap(const int arr[defaultHeightBlocks][defaultWidthBlocks])
+void Map::load(const int arr[defaultHeightBlocks][defaultWidthBlocks])
 {
     for (int row = 0; row < defaultHeightBlocks; row++)
     {
@@ -33,18 +33,18 @@ void Map::loadMap(const int arr[defaultHeightBlocks][defaultWidthBlocks])
     }
 }
 
-void Map::gifMap()
+void Map::gif()
 {
     int columnFrame = int(SDL_GetTicks() / 2000) % defaultGifSteps;
     src.x = columnFrame * defaultSpriteUnit;
 }
 
-void Map::updateMap()
+void Map::update()
 {
-    Map::gifMap();
+    Map::gif();
 }
 
-void Map::drawMap()
+void Map::draw()
 {
     int type = 0;
     for (int row = 0; row < defaultHeightBlocks; row++)
@@ -77,7 +77,7 @@ void Map::drawMap()
     }
 }
 
-void Map::cleanMap() const
+void Map::clean() const
 {
     SDL_DestroyTexture(dirt);
     SDL_DestroyTexture(grass);

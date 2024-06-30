@@ -17,4 +17,5 @@ public:
     void handleInput();
     void update() override;
     void draw() const override;
+    void collisionResolution(GameObject* other) override;
 };
