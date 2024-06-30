@@ -59,7 +59,6 @@ void Player::collisionResolution(GameObject *other)
     if (other->type == 1)
     {
         Vector2D v = dimension.calculateInvasion(other->dimension);
-        //std::cout << "Resolution: x = " << v.x << " | y = " << v.y << std::endl;
         dimension.teleportRelative(dimension.calculateInvasion(other->dimension));
     }
 }

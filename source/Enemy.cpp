@@ -2,6 +2,7 @@
 
 #include "Enemy.h"
 #include "Definitions.h"
+#include "Timer.h"
 
 Enemy::Enemy(const GOLoader loader) : GameObject(loader)
 {
@@ -25,7 +26,7 @@ void Enemy::draw() const
 
 void Enemy::randomStroll()
 {
-    if (SDL_GetTicks() >= strollTime)
+    if (Timer::getGlobal() >= strollTime)
     {
         std::random_device seed;
         std::mt19937 gen(seed());
