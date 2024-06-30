@@ -11,7 +11,7 @@ Enemy::Enemy(const GOLoader loader) : GameObject(loader)
 void Enemy::update()
 {
     Enemy::randomStroll();
-    physics.update(direction, 0.4F);
+    physics.update(direction, speed);
 
     GameObject::update();
 
@@ -32,14 +32,12 @@ void Enemy::randomStroll()
 
         std::uniform_int_distribution<> dis(0, 2);
         std::uniform_int_distribution<> dis2(500, 2000);
+        std::uniform_int_distribution<> dis3(0, 2);
 
         strollTime = dis2(gen) + SDL_GetTicks();
-        // std::cout << "strollTime: " << strollTime << std::endl;
         direction.x = dis(gen) - 1;
-        // std::cout << "direction.x: " << randomNumber1 << std::endl;
         direction.y = dis(gen) - 1;
-        // std::cout << "direction.y: " << randomNumber2 << std::endl;
-        // std::cout << "" << std::endl;
+        speed = dis3(gen) / 5.0F;
     }
 }
 
