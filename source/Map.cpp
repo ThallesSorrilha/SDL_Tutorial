@@ -58,6 +58,7 @@ void Map::draw()
             type = map[row][column];
             switch (type)
             {
+                // criar constantes que representem os números
             case 0:
                 TextureManager::draw(grass, src, dest);
                 break;

@@ -4,7 +4,7 @@
 Player::Player(const GOLoader loader, int controlMap[4]) : GameObject(loader), control(controlMap)
 {
     animation.gifFrameDelay = 200;
-    type = 0;
+    type = Type::Player;
 }
 
 void Player::handleInput()
@@ -53,12 +53,10 @@ void Player::draw() const
     GameObject::draw();
 }
 
-void Player::collisionResolution(GameObject *other)
+void Player::collisionResolution(const GameObject &other)
 {
-
-    if (other->type == 1)
+    if (other.type == Type::Enemy)
     {
-        Vector2D v = dimension.calculateInvasion(other->dimension);
-        dimension.teleportRelative(dimension.calculateInvasion(other->dimension));
+        dimension.teleportRelative(dimension.calculateInvasion(other.dimension));
     }
 }

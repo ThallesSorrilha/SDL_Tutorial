@@ -1,8 +1,6 @@
 #include "Dimension.h"
 #include "Definitions.h"
 
-#include <iostream>
-
 Dimension::Dimension(const GOLoader loader) : position(loader.xPosition, loader.yPosition), size(loader.width, loader.height) {}
 
 Dimension::~Dimension() {}

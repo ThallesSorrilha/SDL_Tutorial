@@ -6,8 +6,8 @@ class InputHandler
 {
 
 private:
-    static const Uint8 *keyStates;
-    static SDL_Event event;
+    inline static const Uint8 *keyStates = nullptr;
+    inline static SDL_Event event;
 
 public:
     InputHandler() {}

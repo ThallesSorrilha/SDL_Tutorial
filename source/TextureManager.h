@@ -11,5 +11,5 @@ public:
     ~TextureManager();
 
     static SDL_Texture *loadTexture(const char *filename);
-    static void draw(SDL_Texture *texture, SDL_Rect srcRect, SDL_Rect destRect);
+    static void draw(SDL_Texture *texture, const SDL_Rect &srcRect, const SDL_Rect &destRect);
 };

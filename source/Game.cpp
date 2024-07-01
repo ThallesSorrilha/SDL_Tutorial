@@ -10,13 +10,6 @@
 #include "../assets/maps/level1.h"
 #include "../assets/controls/controls.h"
 
-SDL_Renderer *Game::renderer = nullptr;
-bool Game::run = false;
-std::vector<GameObject *> Game::gameObjects;
-Map *Game::map = nullptr;
-SDL_Window *Game::window = nullptr;
-Collision *Game::collision = nullptr;
-
 void Game::init(const char *title, int xPosition, int yPosition, int width, int height, int flags)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -65,8 +58,8 @@ void Game::update()
         {
             if (collision->checkCollision(gameObjects[i]->dimension, gameObjects[j]->dimension))
             {
-                gameObjects[i]->collisionResolution(gameObjects[j]);
-                gameObjects[j]->collisionResolution(gameObjects[i]);
+                gameObjects[i]->collisionResolution(*gameObjects[j]);
+                gameObjects[j]->collisionResolution(*gameObjects[i]);
             }
         }
         gameObjects[i]->update();

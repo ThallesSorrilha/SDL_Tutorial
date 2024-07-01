@@ -1,3 +1,5 @@
+// Tile Map ser uma matriz de objetos do jogo
+
 #pragma once
 
 #include <SDL.h>

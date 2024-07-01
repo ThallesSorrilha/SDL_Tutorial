@@ -4,9 +4,14 @@
 #include "Definitions.h"
 #include "Timer.h"
 
+std::random_device seed;
+std::uniform_int_distribution<> dis(0, 2);
+std::uniform_int_distribution<> dis2(500, 2000);
+std::uniform_int_distribution<> dis3(0, 2);
+
 Enemy::Enemy(const GOLoader loader) : GameObject(loader)
 {
-    type = 1;
+    type = Type::Enemy;
 }
 
 void Enemy::update()
@@ -28,20 +33,15 @@ void Enemy::randomStroll()
 {
     if (Timer::getGlobal() >= strollTime)
     {
-        std::random_device seed;
         std::mt19937 gen(seed());
 
-        std::uniform_int_distribution<> dis(0, 2);
-        std::uniform_int_distribution<> dis2(500, 2000);
-        std::uniform_int_distribution<> dis3(0, 2);
-
-        strollTime = dis2(gen) + SDL_GetTicks();
+        strollTime = dis2(gen) + Timer::getGlobal();
         direction.x = dis(gen) - 1;
         direction.y = dis(gen) - 1;
         speed = dis3(gen) / 5.0F;
     }
 }
 
-void Enemy::collisionResolution(GameObject *other)
+void Enemy::collisionResolution(const GameObject &other)
 {
 }

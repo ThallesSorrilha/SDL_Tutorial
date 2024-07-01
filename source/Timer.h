@@ -3,7 +3,7 @@
 class Timer
 {
 private:
-    static Uint32 frameStart;
+    inline static Uint32 frameStart = 0;
 public:
     Timer();
     ~Timer();

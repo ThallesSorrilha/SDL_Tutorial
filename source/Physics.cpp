@@ -36,3 +36,9 @@ void Physics::directionInForce(Vector2D &direction, float defaultSpeed)
     direction.normalize(1);
     force += direction * (mass * gravity * defaultDynamicFrictionCoefficient * defaultSpeed);
 }
+
+Vector2D Physics::deltaPositionInForce(const Vector2D position)
+{
+    Vector2D v;
+    return v;
+}

@@ -12,14 +12,14 @@ class Game
 {
 
 private:
-    static bool run;
-    static SDL_Window *window;
+    inline static bool run = false;
+    inline static SDL_Window *window = nullptr; // interessante
 
 public:
-    static SDL_Renderer *renderer;
-    static std::vector<GameObject *> gameObjects;
-    static Map *map;
-    static Collision *collision;
+    inline static SDL_Renderer *renderer = nullptr;
+    inline static std::vector<GameObject *> gameObjects;
+    inline static Map *map = nullptr;
+    inline static Collision *collision = nullptr;
 
     static void init(const char *title, const int xPosition, const int yPosition, const int width, const int height, const int flags);
     static void handleEvents();

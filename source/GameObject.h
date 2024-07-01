@@ -12,6 +12,15 @@ class GameObject
 {
 
 public:
+    enum class Type
+    {
+        Player,
+        Enemy
+    };
+
+    Type type;
+
+    // vetor de hit box
     Dimension dimension;
     Physics physics;
 
@@ -19,15 +28,13 @@ public:
 
     Animation animation;
 
-    int type;
-
     GameObject(const GOLoader loader);
     ~GameObject();
 
     virtual void update();
     virtual void draw() const;
     virtual void clean() const;
-    virtual void collisionResolution(GameObject* other);
+    virtual void collisionResolution(const GameObject &other);
 
     bool isDirect() const;
 };

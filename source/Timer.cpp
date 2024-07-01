@@ -1,7 +1,5 @@
 #include "Timer.h"
 
-Uint32 Timer::frameStart = 0;
-
 Timer::Timer()
 {
     frameStart = SDL_GetTicks();
