@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="12" height="9" tilewidth="72" tileheight="72" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="Level2" tilewidth="72" tileheight="72" tilecount="12" columns="4">
+  <image source="Level2.png" width="288" height="216"/>
+ </tileset>
+ <layer id="1" name="Layer1" width="12" height="9">
+  <data encoding="csv">
+1,1,1,1,1,1,9,9,1,5,1,1,
+1,1,1,1,1,1,9,9,1,5,1,1,
+1,1,1,1,1,1,9,9,9,5,5,5,
+1,1,1,1,1,1,9,9,9,5,9,1,
+1,1,1,1,1,1,1,1,5,5,9,1,
+1,5,5,5,5,5,5,5,5,9,9,1,
+1,5,1,1,1,1,1,9,9,9,1,1,
+5,5,1,1,1,1,9,9,9,1,1,1,
+1,1,1,1,1,9,9,9,1,1,1,1
+</data>
+ </layer>
+</map>

@@ -1,3 +1,3 @@
 all:
-	g++ source/main/main.cpp source/Game/Game.cpp source/TextureManager/TextureManager.cpp source/GameObject/GameObject.cpp source/Map/Map.cpp source/InputHandler/InputHandler.cpp source/Player/Player.cpp source/Enemy/Enemy.cpp source/Animation/Animation.cpp source/Control/Control.cpp source/Vector2D/Vector2D.cpp source/Physics/Physics.cpp source/Dimension/Dimension.cpp source/Collision/Collision.cpp source/Timer/Timer.cpp -std=c++23 -o executable/main.exe `sdl2-config --cflags --libs` -lSDL2_image
-	./executable/main.exe
+	g++ source/main/main.cpp source/Game/Game.cpp source/TextureManager/TextureManager.cpp source/GameObject/GameObject.cpp source/InputHandler/InputHandler.cpp source/Player/Player.cpp source/Enemy/Enemy.cpp source/Animation/Animation.cpp source/Control/Control.cpp source/Vector2D/Vector2D.cpp source/Physics/Physics.cpp source/Dimension/Dimension.cpp source/Collision/Collision.cpp source/Timer/Timer.cpp source/TileMap/GameMap.cpp source/TileMap/MapParser.cpp source/TileMap/TileLayer.cpp libraries/TinyXML2/tinyxml2.cpp -std=c++23 -o build/main.exe `sdl2-config --cflags --libs` -lSDL2_image
+	./build/main.exe
