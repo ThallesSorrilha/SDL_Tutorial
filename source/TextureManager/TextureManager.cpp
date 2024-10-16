@@ -1,13 +1,11 @@
 #include <string>
+#include <iostream>
 
 #include <SDL_image.h>
 
 #include "../TextureManager/TextureManager.h"
 #include "../Game/Game.h"
 #include "../Definitions/Definitions.h"
-
-TextureManager::TextureManager() {}
-TextureManager::~TextureManager() {}
 
 SDL_Texture *TextureManager::loadTexture(std::string filename)
 {

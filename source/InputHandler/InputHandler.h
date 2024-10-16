@@ -10,9 +10,6 @@ private:
     inline static SDL_Event event;
 
 public:
-    InputHandler() {}
-    ~InputHandler() {}
-
     static void update();
 
     static bool isKeyDown(const SDL_Scancode key);

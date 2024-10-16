@@ -6,7 +6,7 @@
 
 #include "../GameObject/GameObject.h"
 #include "../Collision/Collision.h"
-#include "../TileMap/GameMap.h"
+#include "../Map/Map.h"
 
 class Game
 {
@@ -16,11 +16,10 @@ private:
     inline static SDL_Window *window = nullptr;
 
 public:
+    inline static Collision collision;
     inline static SDL_Renderer *renderer = nullptr;
     inline static std::vector<GameObject *> gameObjects;
-    // inline static Map *map = nullptr;
-    inline static Collision *collision = nullptr;
-    inline static GameMap *levelMap = nullptr;
+    inline static Map *map = nullptr;
 
     static void init(const char *title, const int xPosition, const int yPosition, const int width, const int height, const int flags);
     static void handleEvents();

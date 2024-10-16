@@ -2,12 +2,10 @@
 
 #include "Timer.h"
 
-Timer::Timer()
+void Timer::init()
 {
     frameStart = SDL_GetTicks();
 }
-
-Timer::~Timer() {}
 
 void Timer::update()
 {

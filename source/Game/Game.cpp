@@ -7,9 +7,9 @@
 #include "../InputHandler/InputHandler.h"
 #include "../Player/Player.h"
 #include "../Enemy/Enemy.h"
-#include "../TileMap/MapParser.h"
 #include "../TextureManager/TextureManager.h"
 
+#include "../../assets/maps/level1.h"
 #include "../../assets/controls/controls.h"
 
 void Game::init(const char *title, int xPosition, int yPosition, int width, int height, int flags)
@@ -34,12 +34,9 @@ void Game::init(const char *title, int xPosition, int yPosition, int width, int 
         return;
     }
 
-    if (MapParser::load("Level2", "assets/maps/Level2.tmx"))
-    {
-        levelMap = MapParser::getMap("Level2", 0, 0);
-    }
+    collision = Collision();
 
-    collision = new Collision();
+    map = new Map(level1, TileSource::level1);
 
     gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 4, 4, 1, 1, 30}));
     gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 6, 6, 1, 1, 30}));
@@ -56,13 +53,13 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    levelMap->update();
+    map->update();
 
     for (std::vector<GameObject *>::size_type i = 0; i < gameObjects.size(); i++)
     {
         for (std::vector<GameObject *>::size_type j = i + 1; j < gameObjects.size(); j++)
         {
-            if (collision->checkCollision(gameObjects[i]->dimension, gameObjects[j]->dimension))
+            if (collision.checkCollision(gameObjects[i]->dimension, gameObjects[j]->dimension))
             {
                 gameObjects[i]->collisionResolution(*gameObjects[j]);
                 gameObjects[j]->collisionResolution(*gameObjects[i]);
@@ -76,7 +73,7 @@ void Game::draw()
 {
     SDL_RenderClear(renderer);
 
-    levelMap->draw();
+    map->draw();
 
     for (std::vector<GameObject *>::size_type i = 0; i < gameObjects.size(); i++)
     {
@@ -88,6 +85,8 @@ void Game::draw()
 
 void Game::clean()
 {
+    map->clean();
+
     for (std::vector<GameObject *>::size_type i = 0; i < gameObjects.size(); i++)
     {
         gameObjects[i]->clean();
