@@ -67,6 +67,11 @@ void Game::update()
         }
         gameObjects[i]->update();
     }
+
+    for (std::vector<Shot *>::size_type i = 0; i < playerShots.size(); i++)
+    {
+        playerShots[i]->update();
+    }
 };
 
 void Game::draw()
@@ -80,6 +85,11 @@ void Game::draw()
         gameObjects[i]->draw();
     }
 
+    for (std::vector<Shot *>::size_type i = 0; i < playerShots.size(); i++)
+    {
+        playerShots[i]->draw();
+    }
+
     SDL_RenderPresent(renderer);
 };
 
@@ -90,6 +100,11 @@ void Game::clean()
     for (std::vector<GameObject *>::size_type i = 0; i < gameObjects.size(); i++)
     {
         gameObjects[i]->clean();
+    }
+
+    for (std::vector<Shot *>::size_type i = 0; i < playerShots.size(); i++)
+    {
+        playerShots[i]->clean();
     }
 
     SDL_DestroyWindow(window);

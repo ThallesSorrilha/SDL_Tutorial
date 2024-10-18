@@ -48,3 +48,7 @@ void Enemy::collisionResolution(const GameObject &other)
         dimension.teleportRelative(dimension.calculateInvasion(other.dimension));
     }
 }
+
+void Enemy::attack()
+{
+}

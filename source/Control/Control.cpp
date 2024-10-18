@@ -1,9 +1,9 @@
 #include "Control.h"
 #include "../InputHandler/InputHandler.h"
 
-Control::Control(int arr[4])
+Control::Control(int arr[5])
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
         controlMap[i] = arr[i];
     }
@@ -17,4 +17,5 @@ void Control::handleInput()
     right = InputHandler::isKeyDown(controlMap[1]);
     down = InputHandler::isKeyDown(controlMap[2]);
     left = InputHandler::isKeyDown(controlMap[3]);
+    attack = InputHandler::isKeyDown(controlMap[4]);
 }

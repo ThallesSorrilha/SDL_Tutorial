@@ -27,7 +27,7 @@ public:
     Vector2D direction;
     Animation animation;
 
-    int atack;
+    int attackPt;
     int life;
     int maxLife;
 
@@ -40,6 +40,7 @@ public:
     virtual void collisionResolution(const GameObject &other);
     virtual void sufferDamage();
     virtual bool isDead();
+    virtual void attack();
 
     bool isDirect() const;
 };

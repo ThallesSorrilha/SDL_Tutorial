@@ -16,8 +16,10 @@ public:
     int gifSteps;
 
     Animation(const GOLoader loader);
+    Animation(const char *textureSheet, const float xPosition, const float yPosition, const float width, const float height, const int rowFrame);
     ~Animation();
 
+    void update();
     void update(const bool gif, const Vector2D &position, const Vector2D &direction);
     void draw() const;
     void gif();

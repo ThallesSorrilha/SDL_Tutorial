@@ -5,7 +5,7 @@
 GameObject::GameObject(const GOLoader loader) : dimension(loader), direction(0, 0),
                                                 physics(loader.mass), animation(loader)
 {
-    this->atack = loader.atack;
+    this->attackPt = loader.atack;
     this->maxLife = loader.maxLife;
     this->life = this->maxLife;
 }
@@ -41,6 +41,7 @@ bool GameObject::isDirect() const
 void GameObject::clean()
 {
     animation.clean();
+    this->~GameObject();
 }
 
 // endereço
@@ -63,4 +64,8 @@ bool GameObject::isDead()
     {
         return false;
     }
+}
+
+void GameObject::attack()
+{
 }

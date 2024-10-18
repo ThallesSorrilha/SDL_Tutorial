@@ -1,10 +1,18 @@
 #include "Player.h"
 #include "../Definitions/Definitions.h"
+#include "../Shot/Shot.h"
 
-Player::Player(const GOLoader loader, int controlMap[4]) : GameObject(loader), control(controlMap)
+#include "../Game/Game.h"
+
+#include <iostream>
+
+bool pastState = false;
+
+Player::Player(const GOLoader loader, int controlMap[5]) : GameObject(loader), control(controlMap), timeAttack()
 {
     animation.gifFrameDelay = 200;
     type = Type::Player;
+    isAttack = false;
 }
 
 void Player::handleInput()
@@ -29,6 +37,11 @@ void Player::handleInput()
     {
         direction.y -= 1;
     }
+    if (control.attack)
+    {
+        direction = 0;
+        attack();
+    }
 }
 
 void Player::update()
@@ -43,9 +56,68 @@ void Player::update()
     {
         animation.columnFrame = 0;
     }
+    else
+    {
+        animation.face(direction);
+    }
+
+    isAttack = verifyAttack();
+    /*std::cout << "---" << std::endl;
+    std::cout << "past: " << pastState << std::endl;
+    std::cout << "pres: " << isAttack << std::endl;
+    std::cout << "---" << std::endl;*/
+    if (isAttack)
+    {
+        animation.columnFrame = 4;
+
+        if (!pastState)
+        {
+            // std::cout << "Novo Fogo" << std::endl;
+
+            float x, y, w, h, row;
+            w = h = 1;
+            switch (animation.rowFrame)
+            {
+            case 0:
+                x = dimension.position.x;
+                y = dimension.position.y + 1;
+                row = 0;
+                break;
+
+            case 1:
+                x = dimension.position.x;
+                y = dimension.position.y - 1;
+                row = 1;
+                break;
+
+            case 2:
+                x = dimension.position.x - 1;
+                y = dimension.position.y;
+                row = 2;
+                break;
+
+            case 3:
+                x = dimension.position.x + 1;
+                y = dimension.position.y;
+                row = 3;
+                break;
+
+            default:
+                break;
+            }
+
+            /*std::cout << "x: " << x << std::endl;
+            std::cout << "y: " << y << std::endl;
+            std::cout << "w: " << w << std::endl;
+            std::cout << "h: " << h << std::endl;
+            std::cout << "row: " << row << std::endl;*/
+            Game::playerShots.push_back(new Shot("assets/sprites/Fire.png", x, y, w, h, row));
+            // std::cout << "!Novo Fogo!" << std::endl;
+        }
+    }
+    pastState = isAttack;
 
     animation.update(moving, dimension.position, direction);
-    animation.face(direction);
 }
 
 void Player::draw() const
@@ -57,11 +129,25 @@ void Player::collisionResolution(const GameObject &other)
 {
     if (other.type == Type::Enemy)
     {
-        // dimension.teleportRelative(dimension.calculateInvasion(other.dimension));
         Vector2D impact = dimension.calculateInvasion(other.dimension);
         impact.normalize();
         impact /= 2;
         dimension.teleportRelative(impact);
         sufferDamage();
     }
+}
+
+void Player::attack()
+{
+    bool at = verifyAttack();
+    if (!at)
+    {
+        timeAttack.scheduleEvent(0, 200);
+    }
+}
+
+bool Player::verifyAttack()
+{
+    bool at = timeAttack.isEventPresent();
+    return at;
 }

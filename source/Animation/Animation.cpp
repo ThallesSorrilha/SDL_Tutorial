@@ -21,6 +21,25 @@ Animation::Animation(const GOLoader loader)
     gifSteps = defaultGifSteps;
 }
 
+Animation::Animation(const char *textureSheet, const float xPosition, const float yPosition, const float width, const float height, const int rowFrame)
+{
+    texture = TextureManager::loadTexture(textureSheet);
+
+    srcRect.x = srcRect.y = 0;
+    srcRect.w = std::round(width * defaultSpriteUnit);
+    srcRect.h = std::round(height * defaultSpriteUnit);
+
+    destRect.x = std::round(xPosition * defaultBlockSize);
+    destRect.y = std::round(yPosition * defaultBlockSize);
+    destRect.w = std::round(width * defaultBlockSize);
+    destRect.h = std::round(height * defaultBlockSize);
+
+    columnFrame = 0;
+    this->rowFrame = rowFrame;
+    gifFrameDelay = defaultGifFrameDelay;
+    gifSteps = defaultGifSteps;
+}
+
 Animation::~Animation() {}
 
 void Animation::update(const bool gif, const Vector2D &position, const Vector2D &direction)
@@ -34,6 +53,12 @@ void Animation::update(const bool gif, const Vector2D &position, const Vector2D 
     srcRect.y = rowFrame * defaultSpriteUnit;
     destRect.x = std::round(position.x * defaultBlockSize);
     destRect.y = std::round(position.y * defaultBlockSize);
+}
+
+void Animation::update()
+{
+    srcRect.x = columnFrame * defaultSpriteUnit;
+    srcRect.y = rowFrame * defaultSpriteUnit;
 }
 
 void Animation::draw() const
@@ -72,4 +97,5 @@ void Animation::clean()
     {
         SDL_DestroyTexture(texture);
     }
+    this->~Animation();
 }
