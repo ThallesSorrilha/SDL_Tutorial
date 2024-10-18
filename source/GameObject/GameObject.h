@@ -8,33 +8,38 @@
 #include "../Physics/Physics.h"
 #include "../Dimension/Dimension.h"
 
+enum class Type
+{
+    Player,
+    Enemy,
+    GameObject
+};
+
 class GameObject
 {
 
 public:
-    enum class Type
-    {
-        Player,
-        Enemy
-    };
-
     Type type;
 
     // vetor de hit box
     Dimension dimension;
     Physics physics;
-
     Vector2D direction;
-
     Animation animation;
+
+    int atack;
+    int life;
+    int maxLife;
 
     GameObject(const GOLoader loader);
     ~GameObject();
 
     virtual void update();
     virtual void draw() const;
-    virtual void clean() const;
+    virtual void clean();
     virtual void collisionResolution(const GameObject &other);
+    virtual void sufferDamage();
+    virtual bool isDead();
 
     bool isDirect() const;
 };

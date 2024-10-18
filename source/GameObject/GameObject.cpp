@@ -3,12 +3,21 @@
 #include "GameObject.h"
 
 GameObject::GameObject(const GOLoader loader) : dimension(loader), direction(0, 0),
-                                                physics(loader.mass), animation(loader) {}
+                                                physics(loader.mass), animation(loader)
+{
+    this->atack = loader.atack;
+    this->maxLife = loader.maxLife;
+    this->life = this->maxLife;
+}
 
 GameObject::~GameObject() {}
 
 void GameObject::update()
 {
+    if (isDead())
+    {
+        GameObject::clean();
+    }
     dimension.update(physics.velocity);
 }
 
@@ -29,7 +38,7 @@ bool GameObject::isDirect() const
     }
 }
 
-void GameObject::clean() const
+void GameObject::clean()
 {
     animation.clean();
 }
@@ -37,4 +46,21 @@ void GameObject::clean() const
 // endereço
 void GameObject::collisionResolution(const GameObject &other)
 {
+}
+
+void GameObject::sufferDamage()
+{
+    life--;
+}
+
+bool GameObject::isDead()
+{
+    if (!life > 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

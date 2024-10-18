@@ -66,7 +66,10 @@ void Animation::face(const Vector2D &direction)
     }
 }
 
-void Animation::clean() const
+void Animation::clean()
 {
-    SDL_DestroyTexture(texture);
+    if (texture != nullptr)
+    {
+        SDL_DestroyTexture(texture);
+    }
 }

@@ -43,4 +43,8 @@ void Enemy::randomStroll()
 
 void Enemy::collisionResolution(const GameObject &other)
 {
+    if (other.type == Type::GameObject)
+    {
+        dimension.teleportRelative(dimension.calculateInvasion(other.dimension));
+    }
 }

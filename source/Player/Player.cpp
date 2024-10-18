@@ -57,6 +57,11 @@ void Player::collisionResolution(const GameObject &other)
 {
     if (other.type == Type::Enemy)
     {
-        dimension.teleportRelative(dimension.calculateInvasion(other.dimension));
+        // dimension.teleportRelative(dimension.calculateInvasion(other.dimension));
+        Vector2D impact = dimension.calculateInvasion(other.dimension);
+        impact.normalize();
+        impact /= 2;
+        dimension.teleportRelative(impact);
+        sufferDamage();
     }
 }

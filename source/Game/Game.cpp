@@ -38,9 +38,9 @@ void Game::init(const char *title, int xPosition, int yPosition, int width, int 
 
     map = new Map(level1, TileSource::level1);
 
-    gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 4, 4, 1, 1, 30}));
-    gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 6, 6, 1, 1, 30}));
-    gameObjects.push_back(new Player(GOLoader{"assets/sprites/Player_72.png", 0, 0, 1, 1, 30}, control1));
+    gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 4, 4, 1, 1, 30, 1, 3}));
+    gameObjects.push_back(new Enemy(GOLoader{"assets/sprites/Enemy_72.png", 6, 6, 1, 1, 30, 1, 3}));
+    gameObjects.push_back(new Player(GOLoader{"assets/sprites/Player.png", 0, 0, 1, 1, 30, 1, 5}, control1));
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
     run = true;

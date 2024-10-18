@@ -8,4 +8,6 @@ struct GOLoader
     const float width;
     const float height;
     const float mass;
+    const int atack;
+    const int maxLife;
 };
