@@ -8,16 +8,18 @@ GameObject::GameObject(const GOLoader loader) : dimension(loader), direction(0, 
     this->attackPt = loader.atack;
     this->maxLife = loader.maxLife;
     this->life = this->maxLife;
+    isAttack = false;
 }
 
 GameObject::~GameObject() {}
 
 void GameObject::update()
 {
-    if (isDead())
+    /*if (isDead())
     {
-        GameObject::clean();
-    }
+        std::cout << "Algúem Morreu" << std::endl;
+        this->clean();
+    }*/
     dimension.update(physics.velocity);
 }
 
@@ -40,7 +42,10 @@ bool GameObject::isDirect() const
 
 void GameObject::clean()
 {
+    std::cout << "Limpando GameObject" << std::endl;
+    isDestroyed = true;
     animation.clean();
+    this->dimension.~Dimension();
     this->~GameObject();
 }
 
@@ -49,14 +54,14 @@ void GameObject::collisionResolution(const GameObject &other)
 {
 }
 
-void GameObject::sufferDamage()
+void GameObject::sufferDamage(const int minus)
 {
-    life--;
+    life-=minus;
 }
 
 bool GameObject::isDead()
 {
-    if (!life > 0)
+    if (life <= 0)
     {
         return true;
     }

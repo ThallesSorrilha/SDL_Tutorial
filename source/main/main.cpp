@@ -8,6 +8,8 @@
 #include "../Game/Game.h"
 #include "../Timer/Timer.h"
 
+#include <iostream>
+
 int main(int argv, char **args)
 {
     int frameTime;
@@ -30,6 +32,7 @@ int main(int argv, char **args)
         }
     }
 
+    std::cout << "Vou limpar o jogo" << std::endl;
     Game::clean();
     return 0;
 }

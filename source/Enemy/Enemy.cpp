@@ -52,3 +52,8 @@ void Enemy::collisionResolution(const GameObject &other)
 void Enemy::attack()
 {
 }
+
+void Enemy::clean()
+{
+    GameObject::clean();
+}

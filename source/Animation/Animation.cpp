@@ -40,6 +40,22 @@ Animation::Animation(const char *textureSheet, const float xPosition, const floa
     gifSteps = defaultGifSteps;
 }
 
+Animation::Animation(const char *textureSheet)
+{
+    texture = TextureManager::loadTexture(textureSheet);
+
+    srcRect.x = srcRect.y = 0;
+    srcRect.w = srcRect.h = 0;
+
+    destRect.x = destRect.y = 0;
+    destRect.w = destRect.h = 0;
+
+    columnFrame = rowFrame = 0;
+
+    gifFrameDelay = defaultGifFrameDelay;
+    gifSteps = defaultGifSteps;
+}
+
 Animation::~Animation() {}
 
 void Animation::update(const bool gif, const Vector2D &position, const Vector2D &direction)
@@ -98,4 +114,11 @@ void Animation::clean()
         SDL_DestroyTexture(texture);
     }
     this->~Animation();
+}
+
+void Animation::anchorSpriteInBox(const Dimension &dimension) {
+    destRect.x = dimension.position.x * defaultBlockSize;
+    destRect.y = dimension.position.y * defaultBlockSize;
+    //destRect.w = dimension.size.x * defaultBlockSize;
+    //destRect.h = dimension.size.y * defaultBlockSize;
 }

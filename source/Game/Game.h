@@ -7,7 +7,7 @@
 #include "../GameObject/GameObject.h"
 #include "../Collision/Collision.h"
 #include "../Map/Map.h"
-#include "../Shot/Shot.h"
+#include "../Player/Player.h"
 
 class Game
 {
@@ -18,9 +18,9 @@ private:
 
 public:
     inline static Collision collision;
+    inline static Player *player = nullptr;
     inline static SDL_Renderer *renderer = nullptr;
     inline static std::vector<GameObject *> gameObjects;
-    inline static std::vector<Shot *> playerShots;
     inline static Map *map = nullptr;
 
     static void init(const char *title, const int xPosition, const int yPosition, const int width, const int height, const int flags);

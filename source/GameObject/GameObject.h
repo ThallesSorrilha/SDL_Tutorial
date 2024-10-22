@@ -27,9 +27,11 @@ public:
     Vector2D direction;
     Animation animation;
 
+    bool isAttack;
     int attackPt;
     int life;
     int maxLife;
+    bool isDestroyed = false;
 
     GameObject(const GOLoader loader);
     ~GameObject();
@@ -38,7 +40,7 @@ public:
     virtual void draw() const;
     virtual void clean();
     virtual void collisionResolution(const GameObject &other);
-    virtual void sufferDamage();
+    virtual void sufferDamage(const int minus);
     virtual bool isDead();
     virtual void attack();
 

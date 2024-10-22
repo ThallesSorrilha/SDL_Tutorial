@@ -15,4 +15,5 @@ public:
     virtual void randomStroll();
     virtual void collisionResolution(const GameObject &other) override;
     virtual void attack() override;
+    virtual void clean() override;
 };

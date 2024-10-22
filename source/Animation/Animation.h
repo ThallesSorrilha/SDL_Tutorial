@@ -4,6 +4,7 @@
 
 #include "../GOLoader/GOLoader.h"
 #include "../Vector2D/Vector2D.h"
+#include "../Dimension/Dimension.h"
 
 class Animation
 {
@@ -17,6 +18,7 @@ public:
 
     Animation(const GOLoader loader);
     Animation(const char *textureSheet, const float xPosition, const float yPosition, const float width, const float height, const int rowFrame);
+    Animation(const char *textureSheet);
     ~Animation();
 
     void update();
@@ -26,4 +28,6 @@ public:
 
     void face(const Vector2D &direction);
     void clean();
+
+    void anchorSpriteInBox(const Dimension &dimension);
 };
