@@ -34,6 +34,19 @@ void Game::init(const char *title, int xPosition, int yPosition, int width, int 
         return;
     }
 
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) // inicializa o áudio
+    {
+        std::cout << "Mix_OpenAudio error" << std::endl;
+        return;
+    }
+
+    musica = Mix_LoadMUS("assets/sounds/musics/AdventureBegin.mp3");
+    if (musica == nullptr)
+    {
+        std::cout << "AdventureBegin.mp3 error" << std::endl;
+        return;
+    }
+
     collision = Collision();
 
     map = new Map(level1, TileSource::level1);
@@ -44,8 +57,14 @@ void Game::init(const char *title, int xPosition, int yPosition, int width, int 
     player = new Player(GOLoader{"assets/sprites/Player.png", 0, 0, 1, 1, 30, 1, 5}, control1, {"assets/sprites/Fire.png", 0, 0, 1, 1, 0, 0, 0});
     gameObjects.push_back(player);
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
     run = true;
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
+
+    if (Mix_PlayMusic(musica, -1) == -1)
+    {
+        std::cout << "musica error" << std::endl;
+        return;
+    }
 };
 
 void Game::handleEvents()
@@ -71,8 +90,9 @@ void Game::update()
             }
             gameObjects[i]->update();
             player->attackCollision(*gameObjects[i]);
-
-        } else {
+        }
+        else
+        {
             if (!gameObjects[i]->isDestroyed)
             {
                 gameObjects[i]->clean();
@@ -106,9 +126,14 @@ void Game::clean()
         gameObjects[i]->clean();
     }
 
+    Mix_FreeMusic(musica);
+    Mix_CloseAudio();
+
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
+
     std::cout << "Quit" << std::endl;
+    Mix_Quit();
     SDL_Quit();
 };
 

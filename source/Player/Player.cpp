@@ -1,14 +1,18 @@
 #include "Player.h"
 #include "../Definitions/Definitions.h"
-
 #include "../Game/Game.h"
 
 #include <iostream>
+
+#include <SDL_mixer.h>
+
+Mix_Chunk *attackSound = nullptr;
 
 Player::Player(const GOLoader loader, int controlMap[5], const GOLoader loader2) : GameObject(loader), control(controlMap), timeAttack(), attackSprite(loader2), attackBox(loader)
 {
     animation.gifFrameDelay = 200;
     type = Type::Player;
+    attackSound = Mix_LoadWAV("assets/sounds/effects/sword-sound-effect.wav");
 }
 
 void Player::handleInput()
@@ -90,6 +94,7 @@ void Player::initAttack()
     isAttack = timeAttack.isEventPresent();
     if (!isAttack) // attack
     {
+        Mix_PlayChannel(-1, attackSound, 0);
         timeAttack.scheduleEvent(0, 200);
         isAttack = true;
     }
@@ -171,6 +176,7 @@ void Player::attackCollision(GameObject &other)
 
 void Player::clean()
 {
+    Mix_FreeChunk(attackSound);
     std::cout << "Limpando player" << std::endl;
     GameObject::clean();
     std::cout << "Vou dar quit no jogo" << std::endl;

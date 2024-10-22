@@ -3,6 +3,7 @@
 #include <vector>
 
 #include <SDL.h>
+#include <SDL_mixer.h>
 
 #include "../GameObject/GameObject.h"
 #include "../Collision/Collision.h"
@@ -22,6 +23,7 @@ public:
     inline static SDL_Renderer *renderer = nullptr;
     inline static std::vector<GameObject *> gameObjects;
     inline static Map *map = nullptr;
+    inline static Mix_Music *musica = nullptr;
 
     static void init(const char *title, const int xPosition, const int yPosition, const int width, const int height, const int flags);
     static void handleEvents();
